@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:paddingEnd="10dp"
+    android:paddingStart="5dp">
+
+    <ImageView
+        android:id="@+id/iv_photo_topik"
+        android:layout_width="120dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="5dp"
+        android:foregroundGravity="fill"
+        android:src="@drawable/image" />
+
+    <TextView
+        android:id="@+id/tv_topik"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/iv_photo_topik"
+        android:fontFamily="@font/opensans_semibold"
+        android:maxLines="3"
+        android:text="Gigi gigis? cegah dengan ceria"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textAlignment="textStart"/>
+
+    <TextView
+        android:id="@+id/tv_topik_narasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toEndOf="@+id/iv_photo_topik"
+        android:layout_below="@+id/tv_topik"
+        android:fontFamily="@font/opensans_regular"
+        android:justificationMode="inter_word"
+        android:maxLines="3"
+        android:text="Masih banyak mitos yang berkembang di...."
+        android:textAlignment="textStart"
+        android:textSize="12sp"/>
+
+    <ImageView
+        android:id="@+id/iv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/iv_photo_topik"
+        android:layout_below="@id/tv_topik_narasi"
+        android:src="@drawable/ic_baseline_access_time"/>
+    <TextView
+        android:id="@+id/tv_time_topik"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toEndOf="@+id/iv_time"
+        android:layout_below="@id/tv_topik_narasi"
+        android:fontFamily="@font/opensans_regular"
+        android:text="24 Jul"
+        android:textColor="@color/gray"/>
+
+</RelativeLayout>

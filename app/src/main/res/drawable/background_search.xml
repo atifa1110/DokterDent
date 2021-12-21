@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid
+        android:color="@color/search"
+        android:angle="90"/>
+    <corners
+        android:color="@color/search"
+        android:radius="5dp"/>
+</shape>

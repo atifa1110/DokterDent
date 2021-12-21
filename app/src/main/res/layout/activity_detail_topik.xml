@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Info.DetailTopikActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_detail_topik"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/image_view"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:src="@drawable/image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <bg.devlabs.fullscreenvideoview.FullscreenVideoView
+                android:id="@+id/video_player"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="top|center"
+                android:visibility="gone"
+                app:play_drawable="@drawable/ic_play"
+                app:pause_drawable="@drawable/ic_pause"
+                app:ffwd_drawable="@drawable/ic_fast_forward"
+                app:rew_drawable="@drawable/ic_rewind"
+                app:enter_fullscreen_drawable="@drawable/ic_fullscreen"
+                app:exit_fullscreen_drawable="@drawable/ic_fullscreen_exit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/judul"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/opensans_bold"
+            android:paddingBottom="10dp"
+            android:paddingStart="16dp"
+            android:paddingTop="16dp"
+            android:text="Mitos ini! buatmu takut ke dokter gigi?"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:maxLines="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll" />
+
+        <TextView
+            android:id="@+id/narasi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/opensans_regular"
+            android:justificationMode="inter_word"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="10dp"
+            android:text="Masih banyak mitos yang berkembang di  masyarakat mengenai kesehatan gigi dan mulut yang sering kita dengar dan sangat disayangkan mitos-mitos tersebut banyak dipercayai oleh masyarakat tanpa "
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/judul"/>
+
+        <TextView
+            android:id="@+id/tv_sumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="Sumber :"
+            android:justificationMode="inter_word"
+            android:fontFamily="@font/opensans_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/narasi" />
+
+        <TextView
+            android:id="@+id/sumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="16dp"
+            android:text="1. Fitani, V. 2019. Tips Melakukan Perawatan Gigi saat Hamil. https: www.alodokter.com/tips-melakukan-perawatan-gigi-saat-hamil."
+            android:textColor="@color/black"
+            android:justificationMode="inter_word"
+            android:fontFamily="@font/opensans_italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sumber" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

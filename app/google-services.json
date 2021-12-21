@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "407498821935",
+    "firebase_url": "https://halo-dent-default-rtdb.firebaseio.com",
+    "project_id": "halo-dent",
+    "storage_bucket": "halo-dent.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:407498821935:android:3b568a94ac920ae8f251da",
+        "android_client_info": {
+          "package_name": "com.dentist.dokterdent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "407498821935-s2ro48nl3et2troq1cju0n1okk5969gp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcIr98d7_L0MAcmDYO0k5qBFdaXfTUuLI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "407498821935-s2ro48nl3et2troq1cju0n1okk5969gp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:407498821935:android:44c434a9dd254522f251da",
+        "android_client_info": {
+          "package_name": "com.dentist.halodent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "407498821935-s2ro48nl3et2troq1cju0n1okk5969gp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcIr98d7_L0MAcmDYO0k5qBFdaXfTUuLI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "407498821935-s2ro48nl3et2troq1cju0n1okk5969gp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:407498821935:android:dc558e11fbde8a1bf251da",
+        "android_client_info": {
+          "package_name": "com.dentist.konselorhalodent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "407498821935-s2ro48nl3et2troq1cju0n1okk5969gp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcIr98d7_L0MAcmDYO0k5qBFdaXfTUuLI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "407498821935-s2ro48nl3et2troq1cju0n1okk5969gp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

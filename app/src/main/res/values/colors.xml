@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+    <color name="blue">#006ED1</color>
+    <color name="black">#000000</color>
+    <color name="red">#E44747</color>
+    <color name="gray">#7C7C7C</color>
+    <color name="white">#FFFFFF</color>
+    <color name="whiteSub">#C5C5C5</color>
+    <color name="green">#00CCBB</color>
+    <color name="yellow">#e7db47</color>
+    <color name="graylow">#DADADA</color>
+    <color name="linkColor">#2196F3</color>
+    <color name="search">#F0F3F4</color>
+
+
+    <color name="chat_background">#EDEDED</color>
+
+    <!-- colors for tab and screent text -->
+    <color name="tab_indicator_gray">#c0c0c0</color>
+    <color name="intro_title_color">#000000</color>
+    <color name="intro_description_color">#656565</color>
+
+    <!-- colors for button style -->
+    <color name="gradient_start_color">#4c84ff</color>
+    <color name="gradient_end_color">#18a3fe</color>
+</resources>

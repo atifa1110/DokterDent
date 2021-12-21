@@ -54,4 +54,8 @@ dependencies {
     //full video
     implementation 'bg.devlabs:fullscreen-video-view:1.2.0'
 
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+
 }

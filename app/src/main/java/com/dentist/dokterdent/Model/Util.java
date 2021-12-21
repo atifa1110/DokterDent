@@ -165,6 +165,54 @@ public class Util {
         });
     }
 
+    public static void sendNotificationChat(Context context,String title,String message,String userId){
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference databaseReference = rootRef.child(NodeNames.TOKENS).child(userId);
+
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @org.jetbrains.annotations.NotNull DataSnapshot snapshot) {
+                if(snapshot.child(NodeNames.DEVICE_TOKEN).getValue()!=null){
+                    String deviceToken = snapshot.child(NodeNames.DEVICE_TOKEN).getValue().toString();
+
+                    String Url = "https://halo-dent.web.app/api/";
+
+                    Gson gson = new GsonBuilder()
+                            .setLenient()
+                            .create();
+
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl(Url)
+                            .addConverterFactory(GsonConverterFactory.create(gson))
+                            .build();
+
+
+                    Api api = retrofit.create(Api.class);
+                    Call<ResponseBody> call = api.sendNotificationChat(deviceToken,title,message);
+                    call.enqueue(new Callback<ResponseBody>() {
+                        @Override
+                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                            try{
+                                Toast.makeText(context.getApplicationContext(), response.body().string(),Toast.LENGTH_SHORT).show();
+                            }catch (IOException e){
+                                e.printStackTrace();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                            Toast.makeText(context.getApplicationContext(), t.getMessage(),Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull @org.jetbrains.annotations.NotNull DatabaseError error) {
+
+            }
+        });
+    }
+
     public static String getTimeAgo(long time) {
         //set date format
         SimpleDateFormat sfd = new SimpleDateFormat("EEE dd/MM/yyyy HH:mm");

@@ -1,6 +1,7 @@
 package com.dentist.dokterdent.Chat;
 
 public class MessageModel {
+
     private  String message;
     private  String messageFrom;
     private  String messageId;
@@ -8,6 +9,13 @@ public class MessageModel {
     private  String messageType;
 
     public MessageModel() {
+    }
+
+    public MessageModel(String message, String messageFrom, String messageTime, String messageType) {
+        this.message = message;
+        this.messageFrom = messageFrom;
+        this.messageTime = messageTime;
+        this.messageType = messageType;
     }
 
     public MessageModel(String message, String messageFrom, String messageId, String messageTime, String messageType) {
@@ -42,7 +50,7 @@ public class MessageModel {
         this.messageId = messageId;
     }
 
-    public String  getMessageTime() {
+    public String getMessageTime() {
         return messageTime;
     }
 

@@ -34,8 +34,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.dentist.dokterdent.Model.Constant;
 import com.dentist.dokterdent.Model.NodeNames;
 import com.dentist.dokterdent.Model.Extras;
+import com.dentist.dokterdent.Model.Util;
 import com.dentist.dokterdent.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -357,21 +359,25 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
         //timestamp
         String timestamp = ""+System.currentTimeMillis();
 
-        //hashmap
-        HashMap<String,Object> hashMap = new HashMap();
-        hashMap.put("message",""+message);
-        hashMap.put("messageFrom",""+currentUser.getUid());
-        hashMap.put("messageTime",""+timestamp);
-        hashMap.put("messageType",msgType);
+        MessageModel messageModel = new MessageModel(message,currentUser.getUid(),timestamp,msgType);
 
         //add to db
         databaseReferenceGroups.child(groupId).child("Messages").child(timestamp)
-                .setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                .setValue(messageModel).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 //message sent
                 Toast.makeText(GroupActivity.this,"Pesan berhasil terkirim",Toast.LENGTH_SHORT).show();
                 etMessage.setText("");
+
+                String title="";
+                if(msgType.equals(Constant.MESSAGE_TYPE_TEXT)){
+                    title = "New Message";
+                }else if(msgType.equals(Constant.MESSAGE_TYPE_IMAGE)){
+                    title = "New Image";
+                }
+
+                Util.sendNotification(GroupActivity.this,title,message,currentUser.getUid());
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

@@ -7,9 +7,18 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
 public interface Api {
+
     @FormUrlEncoded
     @POST("send")
     Call<ResponseBody> sendNotification(
+            @Field("topic") String topic,
+            @Field("title") String title,
+            @Field("body") String body
+    );
+
+    @FormUrlEncoded
+    @POST("personal")
+    Call<ResponseBody> sendNotificationChat(
             @Field("token") String token,
             @Field("title") String title,
             @Field("body") String body

@@ -213,19 +213,17 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
     private void sendMessage(String msg, String msgType, String pushId) {
         try {
             if (!msg.equals("")) {
-                HashMap messageMap = new HashMap();
-                messageMap.put(NodeNames.MESSAGE_ID, pushId);
-                messageMap.put(NodeNames.MESSAGE, msg);
-                messageMap.put(NodeNames.MESSAGE_TYPE, msgType);
-                messageMap.put(NodeNames.MESSAGE_FROM, currentUserId);
-                messageMap.put(NodeNames.MESSAGE_TIME, ServerValue.TIMESTAMP);
+
+                String timestamp = ""+System.currentTimeMillis();
+
+                MessageModel messageModel = new MessageModel(msg,currentUserId,pushId,timestamp,msgType);
 
                 String currentUserRef = NodeNames.MESSAGES + "/" + currentUserId + "/" + chatUserId;
                 String chatUserRef = NodeNames.MESSAGES + "/" + chatUserId + "/" + currentUserId;
 
                 HashMap messageUserMap = new HashMap();
-                messageUserMap.put(currentUserRef + "/" + pushId, messageMap);
-                messageUserMap.put(chatUserRef + "/" + pushId, messageMap);
+                messageUserMap.put(currentUserRef + "/" + pushId, messageModel);
+                messageUserMap.put(chatUserRef + "/" + pushId, messageModel);
 
                 etMessage.setText("");
 
@@ -244,7 +242,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
                             }else if(msgType.equals(Extras.MESSAGE_TYPE_IMAGE)){
                                 title = "New Image";
                             }
-                            Util.sendNotification(ChatActivity.this,title,msg,chatUserId);
+                            Util.sendNotificationChat(ChatActivity.this,title,msg,chatUserId);
 
                             String lastMessage = !title.equals("New Message")? title:msg;
                             Util.updateChatDetails(ChatActivity.this,currentUserId,chatUserId,lastMessage);

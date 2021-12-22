@@ -101,7 +101,7 @@ public class ChatPersonalFragment extends Fragment {
         databaseReferenceChats = FirebaseDatabase.getInstance().getReference().child(NodeNames.CHATS).child(currentUser.getUid());
 
         //set query dengan diurutkan dengan waktu kirim
-        query = databaseReferenceChats.orderByChild(NodeNames.TIME_STAMP);
+        query = databaseReferenceChats.orderByChild(NodeNames.LAST_MESSAGE_TIME);
         childEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {

@@ -83,7 +83,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ChatActivity.class);
-                Preference.setKeyChatId(context,chatModel.getUserID());
+                Preference.setKeyChatId(context,chatModel.getUserId());
                 Preference.setKeyChatName(context,chatModel.getUserName());
                 Preference.setKeyChatPhoto(context,chatModel.getPhotoName());
                 context.startActivity(intent);

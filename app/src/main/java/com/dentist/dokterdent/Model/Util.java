@@ -13,6 +13,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.dentist.dokterdent.Chat.ChatModel;
 import com.dentist.dokterdent.Notification.Api;
 import com.dentist.dokterdent.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -55,14 +56,11 @@ public class Util {
             DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
             DatabaseReference databaseReference = rootRef.child(NodeNames.TOKENS).child(currentUser.getUid());
 
-            HashMap<String,String> hashMap = new HashMap<>();
-            hashMap.put(NodeNames.DEVICE_TOKEN,token);
-
-            databaseReference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            databaseReference.child(NodeNames.DEVICE_TOKEN).setValue(token).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(!task.isSuccessful()){
-                        Toast.makeText(context,"Gagal menyimpan Token Device",Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(context,"Gagal menyimpan Token Device",Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -78,33 +76,33 @@ public class Util {
         chatRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                String currentCount = "0";
+                String timestamp = ""+System.currentTimeMillis();
+
+                String currentCount = "0" ;
                 //jika sudah ada di database
                 if(snapshot.child(NodeNames.UNREAD_COUNT).getValue()!=null){
                     currentCount = snapshot.child(NodeNames.UNREAD_COUNT).getValue().toString();
                 }
 
-                Map chatMap = new HashMap();
-                chatMap.put(NodeNames.TIME_STAMP, ServerValue.TIMESTAMP);
-                //convert string into integer whenever sending a message it will increment the unread data
-                chatMap.put(NodeNames.UNREAD_COUNT,Integer.valueOf(currentCount)+1);
-                chatMap.put(NodeNames.LAST_MESSAGE,lastMessage);
-                chatMap.put(NodeNames.LAST_MESSAGE_TIME,ServerValue.TIMESTAMP);
+                Map chatUser = new HashMap();
+                chatUser.put(NodeNames.UNREAD_COUNT,Integer.parseInt(currentCount)+1);
+                chatUser.put(NodeNames.LAST_MESSAGE,lastMessage);
+                chatUser.put(NodeNames.LAST_MESSAGE_TIME,ServerValue.TIMESTAMP);
 
+                Map chatCurrent = new HashMap();
+                chatCurrent.put(NodeNames.UNREAD_COUNT,0);
+                chatCurrent.put(NodeNames.LAST_MESSAGE,lastMessage);
+                chatCurrent.put(NodeNames.LAST_MESSAGE_TIME,ServerValue.TIMESTAMP);
 
-                Map messageUserMap = new HashMap();
-                messageUserMap.put(NodeNames.CHATS + "/" + currentUserId + "/" + chatUserId, chatMap);
-                messageUserMap.put(NodeNames.CHATS + "/" + chatUserId + "/" + currentUserId, chatMap);
-
-                //put the chat map into chat userMap
-//                Map chatUserMap = new HashMap();
-//                chatUserMap.put(NodeNames.CHATS+ "/" + chatUserId +"/" +currentUserId,chatMap);
+                HashMap <String,Object> messageUserMap = new HashMap();
+                messageUserMap.put(NodeNames.CHATS + "/" + currentUserId + "/" + chatUserId, chatCurrent);
+                messageUserMap.put(NodeNames.CHATS + "/" + chatUserId + "/" + currentUserId, chatUser);
 
                 rootRef.updateChildren(messageUserMap, new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(@Nullable DatabaseError error, @NonNull @NotNull DatabaseReference ref) {
                         if(error!=null){
-                            Toast.makeText(context,context.getString(R.string.something_wrong,error.getMessage()), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context,context.getString(R.string.something_wrong,error.getMessage()), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

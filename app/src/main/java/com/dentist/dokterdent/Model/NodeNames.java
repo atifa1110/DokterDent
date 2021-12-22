@@ -74,4 +74,5 @@ public class NodeNames {
     public static final String DOKTER_NAMA = "dokter_nama";
     public static final String WAKTU_MULAI = "mulai";
     public static final String WAKTU_SELESAI = "selesai";
+    public static final String STATUS = "status";
 }

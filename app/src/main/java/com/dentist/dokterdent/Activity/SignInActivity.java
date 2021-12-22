@@ -66,18 +66,25 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         FirebaseUser currentUser = mAuth.getCurrentUser();
         //jika sudah login maka pindah ke main activity
         if (currentUser!=null){
-            FirebaseMessaging.getInstance().subscribeToTopic("messages").addOnCompleteListener(new OnCompleteListener<Void>() {
+            FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
                 @Override
-                public void onComplete(@NonNull @NotNull Task<Void> task) {
-                    String msg = getString(R.string.msg_subscribed);
-                    if(task.isSuccessful()){
-                        Util.updateDeviceToken(SignInActivity.this,msg);
-                    }else{
-                        msg = getString(R.string.msg_failed_subscribed);
-                        Util.updateDeviceToken(SignInActivity.this,msg);
-                    }
+                public void onComplete(@NonNull @NotNull Task<String> task) {
+                    String message = task.getResult();
+                    Util.updateDeviceToken(SignInActivity.this,message);
                 }
             });
+//            FirebaseMessaging.getInstance().subscribeToTopic("messages").addOnCompleteListener(new OnCompleteListener<Void>() {
+//                @Override
+//                public void onComplete(@NonNull @NotNull Task<Void> task) {
+//                    String msg = getString(R.string.msg_subscribed);
+//                    if(task.isSuccessful()){
+//                        Util.updateDeviceToken(SignInActivity.this,msg);
+//                    }else{
+//                        msg = getString(R.string.msg_failed_subscribed);
+//                        Util.updateDeviceToken(SignInActivity.this,msg);
+//                    }
+//                }
+//            });
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }

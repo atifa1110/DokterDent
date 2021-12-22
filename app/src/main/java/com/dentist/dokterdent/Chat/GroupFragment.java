@@ -127,15 +127,6 @@ public class GroupFragment extends Fragment {
         progress.setVisibility(View.VISIBLE);
     }
 
-    private void deleteChat(String chatId) {
-        databaseReferenceGroups.child(currentUser.getUid()).child(chatId).setValue(null).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull @NotNull Task<Void> task) {
-
-            }
-        });
-    }
-
     private void loadGroupChat(DataSnapshot snapshot, boolean isNew, String groupId) {
         emptyChat.setVisibility(View.GONE);
         progress.setVisibility(View.GONE);

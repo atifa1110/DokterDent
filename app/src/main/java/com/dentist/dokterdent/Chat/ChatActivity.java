@@ -45,7 +45,6 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView ivSend, ivAttachment, ivProfile;
     private TextView tvUserName,tvUserStatus;
     private TextInputEditText etMessage;
-    private LinearLayout llProgress;
     private String userName, photoName;
 
     private DatabaseReference mRootRef;
@@ -72,7 +71,6 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_chat);
         setActionBar();
 
-        llProgress = findViewById(R.id.llProgress);
         ivSend = findViewById(R.id.ivSend);
         ivAttachment = findViewById(R.id.ivAttachment);
         ivProfile = findViewById(R.id.iv_profile_action);
@@ -126,7 +124,6 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
 
         setStatusOnline();
         setStatusTyping();
-
     }
 
     private void setStatusOnline(){
@@ -231,9 +228,9 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
                         if (error != null) {
-                            Toast.makeText(ChatActivity.this, getString(R.string.failed_to_send_message, error.getMessage()), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(ChatActivity.this, getString(R.string.failed_to_send_message, error.getMessage()), Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(ChatActivity.this, R.string.message_sent_successfully, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(ChatActivity.this, R.string.message_sent_successfully, Toast.LENGTH_SHORT).show();
 
                             String title="";
 
@@ -242,7 +239,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
                             }else if(msgType.equals(Extras.MESSAGE_TYPE_IMAGE)){
                                 title = "New Image";
                             }
-                            Util.sendNotificationChat(ChatActivity.this,title,msg,chatUserId);
+                            Util.sendNotification(ChatActivity.this,title,msg,chatUserId);
 
                             String lastMessage = !title.equals("New Message")? title:msg;
                             Util.updateChatDetails(ChatActivity.this,currentUserId,chatUserId,lastMessage);

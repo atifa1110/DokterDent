@@ -1,77 +1,76 @@
 package com.dentist.dokterdent.Chat;
 
 public class ChatModel {
-    private String userID;
-    private String userName;
-    private String photoName;
-    private String unreadCount;
-    private String lastMessage;
-    private String lastMessageTime;
 
-    public ChatModel(){
+    private String user_id;
+    private String user_name;
+    private String photo_name;
+    private String unread_count;
+    private String last_message;
+    private String last_message_time;
 
+    public ChatModel(String unread_count, String last_message, String last_message_time) {
+        this.unread_count = unread_count;
+        this.last_message = last_message;
+        this.last_message_time = last_message_time;
     }
 
-    public ChatModel(String userID, String userName, String photoName) {
-        this.userID = userID;
-        this.userName = userName;
-        this.photoName = photoName;
+    public ChatModel(String user_id,String user_name, String photo_name, String unread_count, String last_message, String last_message_time) {
+        this.user_id = user_id;
+        this.user_name = user_name;
+        this.photo_name = photo_name;
+        this.unread_count = unread_count;
+        this.last_message = last_message;
+        this.last_message_time = last_message_time;
     }
 
-    public ChatModel(String userID, String userName, String photoName, String unreadCount, String lastMessage, String lastMessageTime) {
-        this.userID = userID;
-        this.userName = userName;
-        this.photoName = photoName;
-        this.unreadCount = unreadCount;
-        this.lastMessage = lastMessage;
-        this.lastMessageTime = lastMessageTime;
+    public String getUserId() {
+        return user_id;
     }
 
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void setUserId(String user_id) {
+        this.user_id = user_id;
     }
 
     public String getUserName() {
-        return userName;
+        return user_name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserName(String user_name) {
+        this.user_name = user_name;
     }
 
     public String getPhotoName() {
-        return photoName;
+        return photo_name;
     }
 
-    public void setPhotoName(String photoName) {
-        this.photoName = photoName;
+    public void setPhotoName(String photo_name) {
+        this.photo_name = photo_name;
     }
 
     public String getUnreadCount() {
-        return unreadCount;
+        return unread_count;
     }
 
-    public void setUnreadCount(String unreadCount) {
-        this.unreadCount = unreadCount;
+    public void setUnreadCount(String unread_count) {
+        this.unread_count = unread_count;
     }
 
     public String getLastMessage() {
-        return lastMessage;
+        return last_message;
     }
 
-    public void setLastMessage(String lastMessage) {
-        this.lastMessage = lastMessage;
+    public void setLastMessage(String last_message) {
+        this.last_message = last_message;
     }
 
     public String getLastMessageTime() {
-        return lastMessageTime;
+        return last_message_time;
     }
 
-    public void setLastMessageTime(String lastMessageTime) {
-        this.lastMessageTime = lastMessageTime;
+    public void setLastMessageTime(String last_message_time) {
+        this.last_message_time = last_message_time;
     }
 }
+
+

@@ -53,6 +53,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
@@ -73,7 +74,6 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
     private ImageView ivSend, ivAttachment, ivProfile;
     private TextView tvUserName,tvUserStatus;
     private TextInputEditText etMessage;
-    private LinearLayout llProgress;
 
     private RecyclerView rv_message;
     private SwipeRefreshLayout srlMessage;
@@ -120,7 +120,6 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
         };
 
         //inisialisasi semua view
-        llProgress = findViewById(R.id.llProgress);
         ivSend = findViewById(R.id.ivSend);
         ivAttachment = findViewById(R.id.ivAttachment);
         ivProfile = findViewById(R.id.iv_profile_action);
@@ -177,6 +176,8 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
                 loadGroupMessages();
             }
         });
+
+        session();
     }
 
     @Override
@@ -198,6 +199,36 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
                 showImageImportDialog();
                 break;
         }
+    }
+
+    private void session(){
+        databaseReferenceGroups.child(groupId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    String status = snapshot.child(NodeNames.STATUS).getValue().toString();
+
+                    if(status.equals("selesai")){
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(GroupActivity.this);
+                        alertDialogBuilder.setMessage("Sesi chat ini sudah berakhir")
+                                .setCancelable(false)
+                                .setPositiveButton("Kelauar", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        onBackPressed();
+                                    }
+                                });
+                        AlertDialog alertDialog = alertDialogBuilder.create();
+                        alertDialog.show();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void showImageImportDialog(){
@@ -397,7 +428,7 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
 
         childEventListener = new ChildEventListener() {
             @Override
-            public void onChildAdded(@NonNull @org.jetbrains.annotations.NotNull DataSnapshot snapshot, @Nullable  String previousChildName) {
+            public void onChildAdded(@NonNull @NotNull DataSnapshot snapshot, @Nullable  String previousChildName) {
                 MessageModel message = snapshot.getValue(MessageModel.class);
                 if (!messageList.contains(message)) {
                     messageList.add(message);

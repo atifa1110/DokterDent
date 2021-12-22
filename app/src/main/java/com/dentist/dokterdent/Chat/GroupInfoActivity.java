@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -82,7 +84,22 @@ public class GroupInfoActivity extends AppCompatActivity {
         btn_keluar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteChat(groupId);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(GroupInfoActivity.this);
+                alertDialogBuilder.setMessage("Apakah Anda yakin ingin keluar?")
+                        .setCancelable(false)
+                        .setPositiveButton("iya", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                deleteChat(groupId);
+                            }
+                        }).setNegativeButton("tidak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
             }
         });
     }
@@ -91,6 +108,7 @@ public class GroupInfoActivity extends AppCompatActivity {
         databaseReferenceGroup.child(groupId).child("Participants").child(currentUser.getUid()).setValue(null).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<Void> task) {
+
                 finish();
             }
         });

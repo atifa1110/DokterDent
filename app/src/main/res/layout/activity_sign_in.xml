@@ -6,47 +6,40 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     tools:context=".Activity.SignInActivity">
 
     <ImageView
         android:id="@+id/intro_img"
         android:layout_width="110dp"
         android:layout_height="110dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="45dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_dentalcare" />
 
     <TextView
-        style="@style/BoldText"
         android:id="@+id/tv_selamat"
-        android:layout_marginStart="16dp"
+        style="@style/Text.BoldBlack"
         android:layout_marginTop="40dp"
+        android:layout_marginStart="25dp"
         android:text="@string/selamat_datang"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/intro_img" />
 
     <TextView
-        style="@style/RegularTextGray"
         android:id="@+id/tv_sign_in"
-        android:layout_marginStart="16dp"
+        style="@style/Text"
         android:layout_marginTop="5dp"
+        android:layout_marginStart="25dp"
         android:text="@string/signIn_lanjut"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_selamat" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_email"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="16dp"
+        style="@style/TextInputLayout.clear"
+        android:layout_marginTop="30dp"
         app:startIconDrawable="@drawable/ic_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,23 +47,15 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_email_signin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/opensans_regular"
-            android:hint="@string/email_address"
-            android:inputType="textEmailAddress" />
+            style="@style/TextInputEditText.inputEmail"
+            android:hint="@string/email_address" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_password"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
+        style="@style/TextInputLayout"
+        android:layout_marginTop="8dp"
         app:startIconDrawable="@drawable/ic_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,45 +64,37 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_pass_signin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/opensans_regular"
+            style="@style/TextInputEditText.inputPassword"
             android:hint="@string/password"
             android:inputType="textPassword"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        style="@style/RegularText"
         android:id="@+id/tv_lupa_pass"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="16dp"
+        style="@style/Text"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="25dp"
         android:text="@string/lupa_password"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_password" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_masuk"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="70dp"
-        android:background="@drawable/background_btn_green"
-        android:fontFamily="@font/opensans_regular"
+        style="@style/Button.Green"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
         android:text="@string/masuk"
-        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_lupa_pass" />
 
     <TextView
-        style="@style/RegularTextGray"
         android:id="@+id/tv_belum_punya"
-        android:layout_marginTop="18dp"
+        style="@style/Text"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="50dp"
         android:text="@string/belum_punya_akun"
         app:layout_constraintEnd_toEndOf="parent"
@@ -125,10 +102,10 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_masuk" />
 
     <TextView
-        style="@style/RegularText"
         android:id="@+id/tv_daftar"
+        style="@style/Text.Semibold"
         android:layout_marginStart="3dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="16dp"
         android:text="@string/sign_up"
         android:textColor="@color/blue"
         app:layout_constraintStart_toEndOf="@+id/tv_belum_punya"

@@ -14,7 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DokterDent">
-        <activity android:name=".Profile.EditProfileActivity"></activity>
+        <activity
+            android:name=".Activity.DetailPasienActivity"
+            android:exported="true" />
+        <activity android:name=".Profile.EditProfileActivity" />
         <activity android:name=".Info.DetailTopikActivity" />
 
         <service

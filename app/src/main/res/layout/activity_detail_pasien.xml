@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.DetailPasienActivity">
+
+
+    <include
+        android:id="@+id/appbar"
+        layout="@layout/custom_action_layout" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_user"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbar" />
+
+    <TextView
+        android:id="@+id/tv_nama_user_detail"
+        style="@style/Text.Semibold"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="@string/contoh_nama"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_user" />
+
+    <TextView
+        android:id="@+id/tv_email_user_detail"
+        style="@style/Text"
+        android:gravity="center"
+        android:text="@string/email_contoh"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nama_user_detail" />
+
+    <TextView
+        android:id="@+id/tv_konselor_detail"
+        style="@style/Text.Black"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="@string/participant"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_email_user_detail" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_konselor_detail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_konselor_detail" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tv_about"
+                style="@style/Text.Semibold"
+                android:text="@string/about"/>
+
+            <TableLayout
+                android:id="@+id/tab_layout_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_about">
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp">
+
+                    <TextView
+                        android:fontFamily="@font/opensans_regular"
+                        android:textSize="14dp"
+                        android:text="Umur"/>
+
+                    <TextView
+                        android:id="@+id/tv_umur_user"
+                        android:text="21 Tahun"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/opensans_regular"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:fontFamily="@font/opensans_regular"
+                        android:text="Jenis Kelamin"/>
+
+                    <TextView
+                        android:id="@+id/tv_kelamin_user"
+                        style="@style/Text.Black"
+                        android:text="Perempuan"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp">
+
+                    <TextView
+                        android:fontFamily="@font/opensans_regular"
+                        android:text="Alamat" />
+
+                    <TextView
+                        android:id="@+id/tv_alamat_user"
+                        style="@style/Text.Black"
+                        android:text="Grand depok city sektor anggrek 3 blok b4 \nno.2" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:paddingEnd="5dp"
+                        android:text="Nomor Ponsel"
+                        android:fontFamily="@font/opensans_regular"/>
+
+                    <TextView
+                        android:id="@+id/tv_nomer_user"
+                        style="@style/Text.Black"
+                        android:text="087878601919"/>
+
+                </TableRow>
+            </TableLayout>
+
+            <TextView
+                android:id="@+id/tv_hasil_interview"
+                style="@style/Text.Semibold"
+                android:layout_marginTop="10dp"
+                android:text="Hasil Interview"
+                android:layout_below="@id/tab_layout_detail"/>
+
+            <TextView
+                android:id="@+id/tv_interview_1"
+                style="@style/Text.Black"
+                android:layout_marginTop="5dp"
+                android:text="@string/apakah_anda_pernah"
+                android:layout_below="@+id/tv_hasil_interview" />
+
+            <TextView
+                android:id="@+id/tv_jawaban_1"
+                style="@style/Text"
+                android:layout_marginTop="5dp"
+                android:text="Ya"
+                android:layout_below="@id/tv_interview_1"/>
+
+            <TextView
+                android:id="@+id/tv_interview_2"
+                style="@style/Text.Black"
+                android:layout_marginTop="5dp"
+                android:text="@string/keluhan"
+                android:layout_below="@+id/tv_jawaban_1" />
+
+            <TextView
+                android:id="@+id/tv_jawaban_2"
+                style="@style/Text"
+                android:layout_marginTop="5dp"
+                android:text="Ya"
+                android:layout_below="@+id/tv_interview_2"/>
+
+            <TextView
+                android:id="@+id/tv_interview_3"
+                style="@style/Text.Black"
+                android:text="@string/pengobatan"
+                android:layout_below="@+id/tv_jawaban_2" />
+
+            <TextView
+                android:id="@+id/tv_jawaban_3"
+                style="@style/Text"
+                android:layout_marginTop="5dp"
+                android:text="Ya"
+                android:layout_below="@+id/tv_interview_3" />
+
+            <TextView
+                android:id="@+id/tv_interview_4"
+                style="@style/Text.Black"
+                android:text="@string/silahkan_centang"
+                android:layout_below="@+id/tv_jawaban_3" />
+
+            <TextView
+                android:id="@+id/tv_jawaban_4"
+                style="@style/Text"
+                android:layout_marginTop="5dp"
+                android:text="Ya"
+                android:layout_below="@+id/tv_interview_3" />
+
+            <TextView
+                android:id="@+id/tv_hasil_karies"
+                style="@style/Text.Semibold"
+                android:layout_marginTop="10dp"
+                android:text="Hasil Penilaian Gigi Karies"
+                android:layout_below="@id/tv_interview_4"/>
+
+            <TableLayout
+                android:id="@+id/tab_layout_detail_karies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/tv_hasil_karies">
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp">
+
+                    <TextView
+                        android:paddingEnd="10dp"
+                        android:fontFamily="@font/opensans_regular"
+                        android:text="Karies"/>
+
+                    <TextView
+                        android:id="@+id/tv_jenis_karies"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/opensans_regular"
+                        android:text="Rendah" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:paddingEnd="15dp"
+                        android:fontFamily="@font/opensans_regular"
+                        android:text="Total Nilai"/>
+
+                    <TextView
+                        android:id="@+id/tv_nilai_karies"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/opensans_regular"
+                        android:text="19/20" />
+
+                </TableRow>
+
+            </TableLayout>
+        </RelativeLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,17 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp"
     tools:context=".Profile.EditProfileActivity">
-
-    <include
-        android:id="@+id/progressBar"
-        layout="@layout/custom_progress_bar"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_profile_profile"
@@ -29,8 +19,7 @@
 
     <TextView
         android:id="@+id/tv_ubah_profil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Text"
         android:layout_marginTop="5dp"
         android:text="@string/ubah_foto_profil"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,96 +28,69 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_nama"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/TextInputLayout.clear"
         android:layout_marginTop="10dp"
         app:startIconDrawable="@drawable/ic_person"
-        app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_ubah_profil">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_nama_profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/opensans_regular"
-            android:hint="@string/nama"
-            android:inputType="text"/>
+            style="@style/TextInputEditText.inputText"
+            android:hint="@string/nama"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_nip_profile"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/TextInputLayout.clear"
         android:layout_marginTop="5dp"
-        app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_nama">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_nip_profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/opensans_regular"
-            android:hint="Nomor NIP"
-            android:inputType="text"/>
+            style="@style/TextInputEditText.inputText"
+            android:hint="Nomor NIP" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_str"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/TextInputLayout.clear"
         android:layout_marginTop="5dp"
-        app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_nip_profile">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_str_profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/opensans_regular"
-            android:hint="Nomor STR"
-            android:inputType="text"/>
+            style="@style/TextInputEditText.inputText"
+            android:hint="Nomor STR"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_sip"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/TextInputLayout.clear"
         android:layout_marginTop="5dp"
-        app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_str">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_sip_profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/opensans_regular"
-            android:hint="Nomor SIP"
-            android:inputType="text|textMultiLine" />
+            style="@style/TextInputEditText.inputTextMulti"
+            android:hint="Nomor SIP"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_nomor_ponsel"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/TextInputLayout.clear"
         android:layout_marginTop="5dp"
         app:prefixText="+62"
-        app:endIconMode="clear_text"
         app:startIconDrawable="@drawable/ic_phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -136,24 +98,17 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_nomor_profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/TextInputEditText.inputPhone"
             android:layout_marginTop="5dp"
-            android:fontFamily="@font/opensans_regular"
-            android:hint="@string/nomer_ponsel"
-            android:inputType="phone" />
+            android:hint="@string/nomer_ponsel"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_simpan"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/background_btn_green"
-        android:fontFamily="@font/opensans_regular"
+        style="@style/Button.Green"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
         android:text="@string/simpan"
-        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

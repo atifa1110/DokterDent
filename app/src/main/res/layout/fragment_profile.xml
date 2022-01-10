@@ -31,24 +31,19 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:layout_marginStart="10dp"
             android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/tv_nama_profile_fragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/opensans_semibold"
+                style="@style/Text.Semibold"
                 android:text="@string/contoh_nama"
-                android:textColor="@color/black"
                 android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tv_email_profile_fragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/opensans_regular"
+                style="@style/Text"
                 android:text="@string/email_contoh" />
 
         </LinearLayout>
@@ -70,14 +65,11 @@
 
         <TextView
             android:id="@+id/tv_supervised"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/Text.Semibold"
             android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:fontFamily="@font/opensans_semibold"
             android:text="@string/akun"
-            android:textColor="@color/black"
             android:textSize="15sp" />
 
         <View
@@ -88,34 +80,21 @@
 
         <Button
             android:id="@+id/btn_edit_profile"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            style="@style/Button.TextButton"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="10dp"
-            android:layout_weight="1"
             android:drawableEnd="@drawable/ic_arrow_forward"
-            android:fontFamily="@font/opensans_regular"
-            android:text="@string/edit_profile"
-            android:textAlignment="textStart"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:text="@string/edit_profile" />
     </LinearLayout>
-
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_keluar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/Button.Red"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-        android:background="@drawable/background_btn_red"
-        android:fontFamily="@font/opensans_regular"
         android:text="@string/keluar"
-        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

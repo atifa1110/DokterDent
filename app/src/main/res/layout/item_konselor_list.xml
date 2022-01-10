@@ -33,23 +33,18 @@
 
     <TextView
         android:id="@+id/tv_nama_konselor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Text.Semibold"
         android:layout_marginStart="16dp"
         android:layout_marginTop="2dp"
-        android:fontFamily="@font/opensans_semibold"
         tools:text="Konselor Name"
-        android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/layout_image"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_online"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Text"
         android:layout_marginStart="16dp"
         android:layout_marginTop="2dp"
-        android:fontFamily="@font/opensans_regular"
         tools:text="Online"
         android:textColor="@color/green"
         android:textSize="12sp"
@@ -58,13 +53,10 @@
 
     <TextView
         android:id="@+id/tv_konselor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Text.Black"
         android:layout_marginStart="16dp"
         android:layout_marginTop="2dp"
-        android:fontFamily="@font/opensans_regular"
         android:text="Konselor"
-        android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/layout_image"
         app:layout_constraintTop_toBottomOf="@+id/tv_online" />

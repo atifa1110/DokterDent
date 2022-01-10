@@ -29,14 +29,10 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_group_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/opensans_bold"
-        android:padding="10dp"
-        android:text="Group Name"
-        android:textColor="@color/black"
+        style="@style/Text.Semibold"
+        android:text="@string/group_name"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view3" />
 
@@ -51,13 +47,10 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_partisipant_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/Text"
         android:paddingStart="10dp"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/opensans_semibold"
-        android:text="3 members"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/total_member"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
@@ -65,21 +58,17 @@
         android:id="@+id/rv_participant"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="10dp"
-        android:layout_marginTop="5dp"
+        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_partisipant_group" />
 
-    <Button
-        android:id="@+id/btn_leave"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_keluar"
+        style="@style/Button.Red"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:background="@drawable/background_btn_blue"
-        android:fontFamily="@font/opensans_regular"
-        android:text="Keluar"
+        android:text="@string/keluar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

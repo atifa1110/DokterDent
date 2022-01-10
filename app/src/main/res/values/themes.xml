@@ -20,61 +20,158 @@
         <item name="colorControlActivated">@color/blue</item>
     </style>
 
-    <style name="BoldText" parent="@android:style/Widget.TextView">
+    <style name="Text">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/opensans_regular</item>
+    </style>
+
+    <style name="Text.White">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="Text.Black">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="Text.BoldBlack">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_marginStart">25dp</item>
+        <item name="android:layout_marginTop">16dp</item>
         <item name="fontFamily">@font/opensans_bold</item>
     </style>
 
-    <style name="SemiboldText" parent="@android:style/Widget.TextView">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">20dp</item>
+    <style name="Text.BoldWhite">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="fontFamily">@font/opensans_bold</item>
+    </style>
+
+    <style name="Text.BoldBlue">
+        <item name="android:textColor">@color/blue</item>
+        <item name="fontFamily">@font/opensans_bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_marginStart">25dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+    </style>
+
+    <style name="Text.Semibold">
+        <item name="android:textColor">@android:color/black</item>
         <item name="fontFamily">@font/opensans_semibold</item>
     </style>
 
-    <style name="RegularText" parent="@android:style/Widget.TextView">
-        <item name="android:layout_width">wrap_content</item>
+    <style name="Text.SemiboldWhite">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="fontFamily">@font/opensans_semibold</item>
+    </style>
+
+
+    <style name="Button">
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="textAllCaps">true</item>
         <item name="fontFamily">@font/opensans_regular</item>
     </style>
 
-    <style name="RegularTextGray" parent="@android:style/Widget.TextView">
-        <item name="android:layout_width">wrap_content</item>
+    <style name="Button.Blue">
+        <item name="android:background">@drawable/background_btn_blue</item>
+    </style>
+
+    <style name="Button.Green">
+        <item name="android:background">@drawable/background_btn_green</item>
+    </style>
+
+    <style name="Button.Red">
+        <item name="android:background">@drawable/background_btn_red</item>
+    </style>
+
+    <style name="Button.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/gray</item>
-        <item name="android:textSize">14dp</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="textAllCaps">false</item>
         <item name="fontFamily">@font/opensans_regular</item>
     </style>
 
-
-    <style name="ButtonBlue" parent="TextAppearance.AppCompat.Widget.Button">
-        <item name="android:layout_width">match_parent</item>
+    <style name="Button.TextButtonWhite" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="textAllCaps">false</item>
         <item name="fontFamily">@font/opensans_regular</item>
-        <item name="background">@drawable/background_btn_blue</item>
     </style>
 
-    <style name="ButtonGreen" parent="TextAppearance.AppCompat.Widget.Button">
+    <style name="Button.Text" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="fontFamily">@font/opensans_regular</item>
-        <item name="background">@drawable/background_btn_green</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="fontFamily">@font/opensans_semibold</item>
     </style>
 
-    <style name="ButtonRed" parent="TextAppearance.AppCompat.Widget.Button">
+    <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginStart">25dp</item>
+        <item name="android:layout_marginEnd">25dp</item>
+    </style>
+
+    <style name="TextInputLayout.dropDown" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="endIconMode">dropdown_menu</item>
+        <item name="android:layout_marginStart">25dp</item>
+        <item name="android:layout_marginEnd">25dp</item>
+    </style>
+
+    <style name="TextInputLayout.clear" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="endIconMode">clear_text</item>
+        <item name="android:layout_marginStart">25dp</item>
+        <item name="android:layout_marginEnd">25dp</item>
+    </style>
+
+    <style name="TextInputEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="fontFamily">@font/opensans_regular</item>
-        <item name="background">@drawable/background_btn_red</item>
+    </style>
+
+    <style name="TextInputEditText.inputText">
+        <item name="android:editTextStyle">@style/TextInputEditText</item>
+        <item name="android:inputType">text</item>
+    </style>
+
+    <style name="TextInputEditText.inputTextMulti">
+        <item name="android:editTextStyle">@style/TextInputEditText</item>
+        <item name="android:inputType">text|textMultiLine</item>
+    </style>
+
+    <style name="TextInputEditText.inputPhone">
+        <item name="android:editTextStyle">@style/TextInputEditText</item>
+        <item name="android:inputType">phone</item>
+    </style>
+
+    <style name="TextInputEditText.inputEmail">
+        <item name="android:editTextStyle">@style/TextInputEditText</item>
+        <item name="android:inputType">textEmailAddress</item>
+    </style>
+
+    <style name="TextInputEditText.inputPassword">
+        <item name="android:editTextStyle">@style/TextInputEditText</item>
+        <item name="android:inputType">textPassword</item>
+    </style>
+
+    <style name="Checkbox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">25dp</item>
+        <item name="android:layout_marginEnd">25dp</item>
     </style>
 
 </resources>

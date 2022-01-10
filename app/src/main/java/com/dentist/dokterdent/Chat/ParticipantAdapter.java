@@ -15,6 +15,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.dentist.dokterdent.Activity.DetailPasienActivity;
 import com.dentist.dokterdent.Model.Extras;
 import com.dentist.dokterdent.Model.NodeNames;
 import com.dentist.dokterdent.Model.UserModel;
@@ -72,9 +73,9 @@ public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.
                 String id = v.getTag(R.id.TAG_PARTIPANT_ID).toString();
                 String roleType = v.getTag(R.id.TAG_PARTIPANT_ROLE).toString();
                 if (roleType.equals("Pasien")){
-//                    Intent intent = new Intent(context, DetailPasienActivity.class);
-//                    intent.putExtra(Extras.USER,id);
-//                    context.startActivity(intent);
+                    Intent intent = new Intent(context, DetailPasienActivity.class);
+                    intent.putExtra(Extras.USER,id);
+                    context.startActivity(intent);
                 }
             }
         });

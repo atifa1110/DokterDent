@@ -1,88 +1,201 @@
 <resources>
     <string name="app_name">Dokter Dent</string>
-    <string name="welcome">Welcome, </string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
-    <string name="email_address">Email Address</string>
+
+    <!--On Boarding-->
+    <string name="skip">Skip</string>
+    <string name="mulai">Mulai</string>
+    <string name="l">L</string>
+    <string name="c">C</string>
+    <string name="r">R</string>
+    <string name="next">Next</string>
+    <string name="chat_bersama_dokter">Chat Bersama Konselor</string>
+    <string name="caries_risk_assesment">Penilaian Karies Gigi</string>
+    <string name="informasi_kesehatan_gigi">Informasi Kesehatan Gigi</string>
+    <string name="konsultasi_deskripsi">Konsultasikan kesehatan anda secara langsung dengan konselor pilihan anda</string>
+    <string name="caries_deskripsi">Lakukan Pendataan Penilaian Karies Gigi sebagai pencegahan awal adanya karies</string>
+    <string name="informasi_deskripsi">Dapatkan informasi terkini seputar dengan kesehatan gigi anda</string>
+
+    <!--Step 1-4-->
+    <string name="step1">Step 1 of 4</string>
+    <string name="apakah_anda_pernah">Apakah 6 bulan terakhir ini anda pernah ke dokter gigi?</string>
+    <string name="iya">Iya</string>
+    <string name="tidak">Tidak</string>
+    <string name="step2">Step 2 of 4</string>
+    <string name="keluhan">Keluhan apa yang biasanya dialami?</string>
+    <string name="step3">Step 3 of 4</string>
+    <string name="pengobatan">Pengobatan yang dilakukan ketika mengalami  keluhan gigi?</string>
+    <string name="step4">Step 4 of 4</string>
+    <string name="silahkan_centang">Silahkan centang data di bawah apabila anda  memiliki riwayat penyakit di bawah ini?</string>
+    <string name="diabetes">Diabetes</string>
+    <string name="jantung">Jantung</string>
+    <string name="hipertensi">Hipertensi</string>
+    <string name="alergi">Alergi</string>
+    <string name="tidak_ada">Tidak ada</string>
+    <string name="silahkan_ketik">Silahkan Ketik</string>
+    <string name="isi">isi</string>
+    <string name="required">Required</string>
+
+    <!--Sign Up-->
+    <string name="sign_up_to_halo">Sign Up to Halo Dent</string>
+    <string name="masukkan_data">Masukkan informasi anda di bawah ini</string>
+    <string name="email_address">Email</string>
+    <string name="nama">Nama</string>
+    <string name="usia">Usia</string>
     <string name="password">Password</string>
+    <string name="password_confirm">Password Confirm</string>
+    <string name="daftar">Daftar</string>
+    <string name="sudah_punya_akun">Sudah punya akun? </string>
+    <string name="sign_in">Sign In</string>
+    <string name="failed_to_update">Failed to update profile %1$ss</string>
+    <string name="sign_up_failed">Sign Up Failed : %1$s</string>
+
+    <!--Sign In-->
     <string name="selamat_datang">Hi, Selamat Datang!</string>
     <string name="signIn_lanjut">Sign In untuk melanjutkan</string>
     <string name="lupa_password">Lupa Password?</string>
     <string name="masuk">Masuk</string>
     <string name="belum_punya_akun">Belum punya akun?</string>
     <string name="sign_up">Sign Up</string>
-    <string name="masukkan_email">Masukkan email</string>
-    <string name="masukkan_password">Masukkan password</string>
     <string name="masukkan_email_benar">Masukkan email yang benar</string>
     <string name="login_success">Login Successful</string>
-    <string name="btn_next">Next</string>
-    <string name="apakah_anda_pernah">Apakah 6 bulan terakhir ini anda pernah ke dokter gigi?</string>
-    <string name="step1">Step 1 of 4</string>
-    <string name="step2">Step 2 of 4</string>
-    <string name="keluhan">Keluhan apa yang biasanya dialami?</string>
-    <string name="step3">"Step 3 of 4 "</string>
-    <string name="pengobatan">Pengobatan apa yang dilakukan ketika mengalami keluhan gigi?</string>
-    <string name="required">Required</string>
-    <string name="isi">Isi</string>
-    <string name="diabetes">Diabetes</string>
-    <string name="blm_ada_chat">Belum Ada Chat Aktif</string>
-    <string name="failed_to_send_message">Failed to send Message : %1$s</string>
-    <string name="failed_to_fetch_chat_list">Failed to fetch chat list : %1$s</string>
-    <string name="konsultasikan_dengan">Konsultasi masalah kesehatan anda\ndengan konselor kami</string>
-    <string name="upload_progress">Uploading %1$s (%2$s %%)</string>
-    <string name="download_progress">Downloading %1$s (%2$s %%)</string>
-    <string name="failed_to_upload">Failed to upload : %1$s</string>
-    <string name="forward">Forward</string>
-    <string name="delete">Delete</string>
-    <string name="share">Share</string>
-    <string name="download">Download</string>
-    <string name="failed_to_delete_message">Failed to delete message : %1$s</string>
-    <string name="message_deleted_successfully">Message deleted successfully</string>
-    <string name="failed_to_delete_file">Failed to delete file %1$s</string>
-    <string name="failed_to_store_file">Failed to store file</string>
-    <string name="file_downloaded_successfully">File Downloaded Successfully</string>
-    <string name="view">View</string>
-    <string name="failed_to_download">Failed to download file : %1$s</string>
-    <string name="share_with">Share with..</string>
+    <string name="login_failed">"Login Failed"</string>
+    <string name="msg_subscribed">messages</string>
+    <string name="msg_failed_subscribed">messages failed</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="ubah_foto_profil">ubah foto profil</string>
-    <string name="nama">Nama</string>
-    <string name="simpan">Simpan</string>
-    <string name="jenis_kelamin">Jenis Kelamin</string>
-    <string name="nim">Nim</string>
-    <string name="angkatan">Angkatan Profesi</string>
-    <string name="nomer_telpon">Nomor Telpon</string>
-    <string name="keluar">Keluar</string>
-    <string name="contoh_nama">Nabilah Kusuma Wardhani</string>
-    <string name="email_contoh">nabilahkusumaa@student.ub.ac.id</string>
+    <!--Lupa Password -->
+    <string name="silahkan_masukkan">Silahkan Masukkan Email anda</string>
+    <string name="kirim">kirim</string>
+
+    <!--Main-->
+    <string name="home">Home</string>
+    <string name="chat">Chat</string>
+    <string name="info">Info</string>
+    <string name="profile">Profile</string>
+
+    <!--Home Fragment-->
+    <string name="welcome">Welcome, </string>
+    <string name="contoh_nama">Atifa Fiorenza</string>
+    <string name="available_konselor">Available Konselor</string>
+    <string name="lihat_semua">Lihat Semua</string>
+    <string name="topik_hangat">Topik Hangat</string>
+    <string name="belum_isi">Belum isi Kuesioner Penilaian Karies Gigi?</string>
+    <string name="lets_go">Lets Go</string>
+
+    <!--Profile Fragment-->
+    <string name="email_contoh">atifafiorenza24@gmail.com</string>
     <string name="akun">Akun</string>
     <string name="edit_profile">Edit Profile</string>
-    <string name="data_berhasil_disimpan">Data berhasil disimpan</string>
-    <string name="choose_from_library">Choose from gallery</string>
-    <string name="remove_current_photo">Remove</string>
-    <string name="enter_message">Enter message</string>
-    <string name="message_sent_successfully">Message sent successfully</string>
-    <string name="judul_contoh">No Judul</string>
-    <string name="sign_up_to_halo">Sign Up to Halo Dent</string>
-    <string name="masukkan_data">Maukkan Informasi anda di bawah ini</string>
-    <string name="password_confirm">Confirm Password</string>
+    <string name="kuesioner">Kuesioner</string>
+    <string name="keluar">Keluar</string>
+    <string name="penilaian">Penilaian Resiko Gigi Berlubang</string>
+
+    <!-- Kuesioner activity -->
+    <string name="judul">Survey Kuesioner Karies</string>
+    <string name="penjelasan">Dengan mengisi kuesioner ini kami dapat membantu anda mengukur seberapa tinggi karies gigi anda</string>
+    <string name="karies_rendah">Rendah</string>
+    <string name="karies_sedang">Sedang</string>
+    <string name="karies_tinggi">Tinggi</string>
+
+    <string name="menjaga_karies">Berdasarkan survey yang telah di ambil untuk menjaga kondisi rongga mulut tetap sehat sebaiknya melakukan : </string>
+    <string name="cara_jaga_karies_rendah">
+        1. Mengosok gigi dua kali sehari pada pagi hari sesudah sarapan dan malam sebelum tidur
+        \n2. Periksa gigi minimal 1 tahun sekali ke dokter gigi
+        \n3. Mengurangi makan dan minum manis anda rendah
+    </string>
+    <string name="cara_jaga_karies_sedang">
+        1. Mengosok gigi dua kali sehari pada pagi hari  sesudah sarapan dan malam sebelum tidur
+        \n2. Periksa gigi minimal 6 bulan sekali ke dokter gigi
+        \n3. Mengurangi makan dan minum manis
+        \n4. Dokter gigi akan merawat gigi yang berlubang dan melakukan mengulasan fluoride di permukaan gigi 6 bulan sekali
+    </string>
+    <string name="cara_jaga_karies_tinggi">
+        1. Mengosok gigi dua kali sehari pada pagi hari sesudah sarapan dan malam sebelum tidur
+        \n2. Periksa gigi minimal 4 bulan sekali ke dokter gigi
+        \n3. Mengurangi makan dan minum manis
+        \n4. Dokter gigi akan gigi akan merawat gigi yang berlubang dan melakukan mengulasan fluoride di permukaan gigi 4 bulan sekali
+    </string>
+
+    <!-- Profile activity -->
+    <string name="jenis_kelamin">Jenis Kelamin</string>
+    <string name="tahun">Tahun</string>
+    <string name="alamat">Alamat</string>
     <string name="nomer_ponsel">Nomor Ponsel</string>
-    <string name="daftar">Daftar</string>
-    <string name="sign_in">Sign In</string>
-    <string name="konselor">Konselor</string>
-    <string name="info">Info</string>
-    <string name="add">tambah</string>
-    <string name="online">Online</string>
-    <string name="msg_subscribed">messages</string>
-    <string name="msg_failed_subscribed">failed messages</string>
-    <string name="failed_to_send_notification">Failed to send notification : %1$s</string>
-    <string name="time">08:00</string>
-    <string name="this_is_message">This is a Message</string>
-    <string name="message_name">John Conan</string>
+    <string name="simpan">Simpan</string>
+    <string name="ubah_foto_profil">Ubah Foto Profil</string>
+    <string name="remove_current_photo">Hapus Foto</string>
+    <string name="choose_from_library">Pilih Foto</string>
+    <string name="update_successful">Update Successful</string>
     <string name="failed_to_read_data">Failed to read data : %1$s</string>
-    <string name="failed_to_update_data">Failed to update data : %1$s</string>
-    <string name="something_wrong">Something wrong : %1$s</string>
+
+
+    <!-- Detail Topik activity -->
+    <string name="judul_topik">Mitos ini! buatmu takut ke dokter gigi?</string>
+    <string name="narasi_topik">Masih banyak mitos yang berkembang di masyarakat mengenai kesehatan gigi dan mulut yang sering kita dengar dan sangat disayangkan mitos-mitos tersebut banyak dipercayai oleh masyarakat tanpa</string>
+    <string name="sumber">Sumber :</string>
+    <string name="sumber_topik">1. Fitani, V. 2019. Tips Melakukan Perawatan Gigi saat Hamil. https: www.alodokter.com/tips-melakukan-perawatan-gigi-saat-hamil.</string>
+
+    <!-- Detail Konselor activity -->
+    <string name="konselor">Konselor</string>
+    <string name="about">About</string>
+    <string name="diawasi_oleh">Diawasi oleh</string>
+    <string name="jadwal_chat_online">Jadwal Chat Online</string>
+    <string name="nim">Nim</string>
+    <string name="contoh_nim">17515150207111018</string>
+    <string name="angkatan">Angkatan</string>
+    <string name="contoh_angkatan">2019</string>
+    <string name="contoh_kelamin">Perempuan</string>
+    <string name="contoh_dokter">Drg. Feni Istikharoh</string>
+    <string name="jenis_dokter">Dokter Gigi Umum</string>
+    <string name="chat_sekarang">Chat Sekarang</string>
+    <string name="contoh_jadwal">08:00 - 10:00</string>
+
+    <!-- Detail Dokter activity -->
+    <string name="sip">Nomor SIP : </string>
+    <string name="str">Nomor STR : </string>
+    <string name="nip">Nomor NIP : </string>
+    <string name="contoh_nip">19904242019032020</string>
+    <string name="contoh_str">017714 02 01 0341</string>
+    <string name="contoh_sip">446.DG/325.1/35.73.302/2019</string>
+
+    <!-- Group activity -->
+    <string name="enter_message">Enter Message</string>
+    <string name="failed_to_send_message">Failed to send Message</string>
+
+    <!-- Group Info activity -->
+    <string name="group_name">Group Name</string>
+    <string name="total_member">3 members</string>
+
+    <!-- Item Message -->
+    <string name="this_is_message">This is a Message</string>
+    <string name="message_name">John Grady Cole</string>
+    <string name="time">08:00</string>
+
+    <!-- Item User -->x
+    <string name="Online">Online</string>
+    <string name="participant_name">Participant Name</string>
+
+    <!-- empty chat -->
+    <string name="blm_ada_chat">Belum Ada Chat Aktif</string>
+    <string name="konsultasikan_dengan">Konsultasi masalah kesehatan anda\ndengan konselor kami</string>
+
+    <!-- main quiz -->
+    <string name="question">Question 1/9</string>
+    <string name="contoh_pertanyaan">Berapa kali anak anda menggosok gigi dalam sehari?</string>
+    <string name="option_a">A</string>
+    <string name="option_b">B</string>
+    <string name="option_c">C</string>
+    <string name="option_d">D</string>
+    <string name="search">search</string>
+    <string name="title_activity_test">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_chat">Chat</string>
+    <string name="title_info">Information</string>
+    <string name="title_profile">Profile</string>
+    <string name="participant">Pasien</string>
+    <string name="jadwal">Jadwal</string>
+    <string name="add">Add</string>
+    <string name="stop">Stop</string>
+    <string name="cari">Cari</string>
 </resources>

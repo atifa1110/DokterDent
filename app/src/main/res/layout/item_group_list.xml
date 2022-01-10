@@ -12,7 +12,6 @@
         android:layout_height="match_parent"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:paddingEnd="5dp"
         android:paddingStart="5dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -23,61 +22,47 @@
 
         <TextView
             android:id="@+id/tv_group_chat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Text.Semibold"
             android:layout_toEndOf="@+id/iv_group_chat"
-            android:fontFamily="@font/opensans_semibold"
             android:layout_marginStart="10dp"
-            android:textColor="@color/black"
             android:textSize="16sp"
             tools:text="Group Name" />
 
         <TextView
             android:id="@+id/tv_sender_message_chat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Text.Black"
             android:layout_below="@+id/tv_group_chat"
             android:layout_toEndOf="@+id/iv_group_chat"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/opensans_regular"
-            android:textColor="@color/black"
-            android:textSize="14sp"
             android:maxLines="2"
             tools:text="Sender Name"/>
 
         <TextView
             android:id="@+id/tv_last_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Text"
             android:layout_below="@+id/tv_group_chat"
             android:layout_toEndOf="@+id/tv_sender_message_chat"
             android:maxLines="2"
-            android:textSize="14sp"
             android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:fontFamily="@font/opensans_regular"
             tools:text="Last Message" />
 
         <TextView
             android:id="@+id/tv_last_message_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Text"
+            android:layout_marginEnd="5dp"
             android:layout_alignParentEnd="true"
-            android:fontFamily="@font/opensans_regular"
-            android:textSize="14sp"
             tools:text="09:00" />
 
-        <!--        <View-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="0.1dp"-->
-        <!--            android:layout_marginTop="15dp"-->
-        <!--            android:layout_marginStart="10dp"-->
-        <!--            android:background="@color/grey"-->
-        <!--            android:layout_below="@+id/iv_group_chat"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintTop_toBottomOf="@id/iv_group_chat" />-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.08dp"
+            android:layout_below="@+id/iv_group_chat"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@+id/iv_group_chat"
+            android:background="@color/gray"
+            app:layout_constraintTop_toBottomOf="@id/iv_group_chat" />
 
     </RelativeLayout>
 

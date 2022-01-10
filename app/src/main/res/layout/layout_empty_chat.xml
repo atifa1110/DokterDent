@@ -1,47 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ll_empty_chat"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:padding="16dp">
+    android:padding="20dp"
+    android:gravity="center">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
+        app:srcCompat="@drawable/ic_chat" />
+
+    <TextView
+        android:id="@+id/tv_blm_ada_chat"
+        style="@style/Text.Semibold"
+        android:layout_below="@id/imageView2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/gray"
+        android:layout_marginTop="10dp"
         android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:text="@string/blm_ada_chat"
+        android:textSize="18sp" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            app:srcCompat="@drawable/ic_empty_chat" />
 
-        <TextView
-            android:id="@+id/tv_blm_ada_chat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/opensans_bold"
-            android:text="@string/blm_ada_chat"
-            android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/tv_konsultasikan"
+        style="@style/Text"
+        android:layout_below="@id/tv_blm_ada_chat"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="center"
+        android:text="@string/konsultasikan_dengan" />
 
-        <TextView
-            android:id="@+id/tv_konsultasikan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/opensans_regular"
-            android:gravity="center"
-            android:lines="2"
-            android:text="@string/konsultasikan_dengan"/>
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

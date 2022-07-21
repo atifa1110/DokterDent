@@ -1,98 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Info.DetailTopikActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_detail_topik"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="2dp">
 
         <RelativeLayout
-            android:id="@+id/ll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/image_view"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:src="@drawable/image"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_example" />
+
+            <ImageView
+                android:id="@+id/fullscreen"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@+id/image_view"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/ic_fullscreen_black" />
 
             <bg.devlabs.fullscreenvideoview.FullscreenVideoView
                 android:id="@+id/video_player"
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:layout_gravity="top|center"
+                android:layout_height="192dp"
                 android:visibility="gone"
-                app:play_drawable="@drawable/ic_play"
-                app:pause_drawable="@drawable/ic_pause"
-                app:ffwd_drawable="@drawable/ic_fast_forward"
-                app:rew_drawable="@drawable/ic_rewind"
                 app:enter_fullscreen_drawable="@drawable/ic_fullscreen"
                 app:exit_fullscreen_drawable="@drawable/ic_fullscreen_exit"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:ffwd_drawable="@drawable/ic_fast_forward"
+                app:pause_drawable="@drawable/ic_pause"
+                app:play_drawable="@drawable/ic_play"
+                app:rew_drawable="@drawable/ic_rewind" />
 
         </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/judul"
-            style="@style/Text.Semibold"
-            android:layout_marginStart="16dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:text="@string/judul_topik"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ll" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/narasi"
-            style="@style/Text.Black"
-            android:justificationMode="inter_word"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="10dp"
-            android:text="@string/narasi_topik"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/judul"/>
+        <RelativeLayout
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_sumber"
-            style="@style/Text"
-            android:layout_marginTop="5dp"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:text="@string/sumber"
-            android:justificationMode="inter_word"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/narasi" />
+            <ImageView
+                android:id="@+id/iv_time_detail_topik"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_baseline_access_time" />
 
-        <TextView
-            android:id="@+id/sumber"
-            style="@style/Text.Black"
-            android:layout_marginTop="5dp"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="16dp"
-            android:text="@string/sumber_topik"
-            android:justificationMode="inter_word"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_sumber" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_tanggal_detail_topik"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="5dp"
+                android:layout_toEndOf="@+id/iv_time_detail_topik"
+                android:fontFamily="@font/roboto_medium"
+                tools:text="20 Januari 2021" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_judul_detail_topik"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_tanggal_detail_topik"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                tools:text="Gigi gigis? cegah dengan ceria" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_narasi_detail_topik"
+                style="@style/Text"
+                android:layout_below="@id/tv_judul_detail_topik"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:justificationMode="inter_word"
+                tools:text="@string/narasi_topik" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_smb_detail_topik"
+                style="@style/Text.Medium"
+                android:layout_below="@id/tv_narasi_detail_topik"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/roboto_medium"
+                android:justificationMode="inter_word"
+                android:text="@string/sumber"
+                android:textColor="#4A4A4A" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_sumber_detail_topik"
+                style="@style/Text.Black"
+                android:layout_below="@id/tv_smb_detail_topik"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="8dp"
+                android:justificationMode="inter_word"
+                android:text="@string/sumber_topik" />
+
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

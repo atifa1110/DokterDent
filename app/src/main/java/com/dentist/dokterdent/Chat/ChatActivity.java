@@ -8,17 +8,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.dentist.dokterdent.Model.Extras;
@@ -34,7 +33,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -54,7 +52,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
     private RecyclerView rvMessage;
     private SwipeRefreshLayout srlMessage;
     private MessageAdapter messagesAdapter;
-    private ArrayList<MessageModel> messageList;
+    private ArrayList<Messages> messageList;
 
     //default page = 1
     private int currentPage = 1;
@@ -201,7 +199,8 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.ivSend:
                 DatabaseReference userMessagePush = mRootRef.child(NodeNames.MESSAGES).child(currentUserId).child(chatUserId).push();
-                String pushId = userMessagePush.getKey();
+                //String pushId = userMessagePush.getKey();
+                String pushId = ""+System.currentTimeMillis();
                 sendMessage(etMessage.getText().toString().trim(), Extras.MESSAGE_TYPE_TEXT, pushId);
                 break;
         }
@@ -213,14 +212,14 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
 
                 String timestamp = ""+System.currentTimeMillis();
 
-                MessageModel messageModel = new MessageModel(msg,currentUserId,pushId,timestamp,msgType);
+                Messages messages = new Messages(msg,currentUserId,timestamp,msgType);
 
                 String currentUserRef = NodeNames.MESSAGES + "/" + currentUserId + "/" + chatUserId;
                 String chatUserRef = NodeNames.MESSAGES + "/" + chatUserId + "/" + currentUserId;
 
                 HashMap messageUserMap = new HashMap();
-                messageUserMap.put(currentUserRef + "/" + pushId, messageModel);
-                messageUserMap.put(chatUserRef + "/" + pushId, messageModel);
+                messageUserMap.put(currentUserRef + "/" + pushId, messages);
+                messageUserMap.put(chatUserRef + "/" + pushId, messages);
 
                 etMessage.setText("");
 
@@ -232,23 +231,29 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
                         } else {
                             //Toast.makeText(ChatActivity.this, R.string.message_sent_successfully, Toast.LENGTH_SHORT).show();
 
-                            String title="";
+                            String message="";
+                            String image="";
+                            String title = mAuth.getCurrentUser().getDisplayName();
 
                             if(msgType.equals(Extras.MESSAGE_TYPE_TEXT)){
-                                title = "New Message";
+                                message = msg;
+                                image = " ";
                             }else if(msgType.equals(Extras.MESSAGE_TYPE_IMAGE)){
-                                title = "New Image";
+                                message = "New Image";
+                                image = msg;
                             }
-                            Util.sendNotification(ChatActivity.this,title,msg,chatUserId);
 
-                            String lastMessage = !title.equals("New Message")? title:msg;
-                            Util.updateChatDetails(ChatActivity.this,currentUserId,chatUserId,lastMessage);
+                            Util.sendNotificationChat(ChatActivity.this,title,message,image,chatUserId);
+
+                            //String lastMessage = !title.equals("New Message")? title:msg;
+                            String lastMessage = msg;
+                            Util.updateChatDetails(ChatActivity.this,currentUserId,chatUserId,lastMessage,timestamp);
                         }
                     }
                 });
             }
         } catch (Exception ex) {
-            Toast.makeText(ChatActivity.this, getString(R.string.failed_to_send_message, ex.getMessage()), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(ChatActivity.this, getString(R.string.failed_to_send_message, ex.getMessage()), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -265,14 +270,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         childEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                String msg = snapshot.child("message").getValue().toString();
-                String messageFrom = snapshot.child("messageFrom").getValue().toString();
-                String messageId = snapshot.child("messageId").getValue().toString();
-                String messageTime= snapshot.child("messageTime").getValue().toString();
-                String messageType = snapshot.child("messageType").getValue().toString();
-
-                MessageModel message = new MessageModel(msg,messageFrom,messageId,messageTime,messageType);
-
+                Messages message = snapshot.getValue(Messages.class);
                 if (!messageList.contains(message)) {
                     messageList.add(message);
                     messagesAdapter.notifyDataSetChanged();
@@ -311,7 +309,6 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
             case android.R.id.home:
                 finish();
                 break;
-
             default:
                 break;
 
@@ -319,7 +316,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
-    private void setActionBar() {
+    private void setActionBar(){
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setTitle("");
@@ -327,6 +324,10 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeButtonEnabled(true);
             actionBar.setElevation(0);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_arrow_back_black);
+            ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#FFFFFF"));
+            // Set BackgroundDrawable
+            actionBar.setBackgroundDrawable(colorDrawable);
             actionBar.setCustomView(actionBarLayout);
             actionBar.setDisplayOptions(actionBar.getDisplayOptions() | ActionBar.DISPLAY_SHOW_CUSTOM);
         }

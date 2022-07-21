@@ -16,7 +16,7 @@
 
     <TextView
         android:id="@+id/tv_blm_ada_chat"
-        style="@style/Text.Semibold"
+        style="@style/Text.Medium"
         android:layout_below="@id/imageView2"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"

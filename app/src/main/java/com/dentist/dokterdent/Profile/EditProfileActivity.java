@@ -16,19 +16,21 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.dentist.dokterdent.Model.DokterModel;
+import com.dentist.dokterdent.Model.Dokters;
 import com.dentist.dokterdent.Model.NodeNames;
 import com.dentist.dokterdent.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -44,18 +46,23 @@ import com.google.firebase.storage.UploadTask;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EditProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private CircleImageView ivProfile;
-    private Button btn_simpan;
-    private ProgressDialog progress;
     private TextInputEditText etNama ,etNip, etStr ,etSip,etNomor;
-    private String id,email,nama,photo,status,ponsel,role,nip,str,sip;
-
+    private AutoCompleteTextView etJenisKel;
+    private Button btn_simpan;
+    private CircleImageView ivProfile;
+    private ProgressDialog progress;
     private BottomSheetDialog bottomSheetDialog;
-    private DokterModel dokter;
+
+    private Dokters dokter;
+    private ArrayAdapter<String> jenisAdapter;
+    private String id,email,nama,photo,status,ponsel,role,nip,str,sip,kelamin;
     private Uri localFileUri, serverFileUri;
     private StorageReference fileStorage;
     private DatabaseReference databaseReference;
@@ -67,6 +74,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
         setActionBar();
+
         //inisialisasi view
         etNama = findViewById(R.id.et_nama_profile);
         etNip = findViewById(R.id.et_nip_profile);
@@ -75,6 +83,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         etNomor = findViewById(R.id.et_nomor_profile);
         btn_simpan = findViewById(R.id.btn_simpan);
         ivProfile = findViewById(R.id.iv_profile_profile);
+        etJenisKel = findViewById(R.id.et_jenis_kelamin);
 
         progress = new ProgressDialog(this);
         progress.setMessage("Silahkan Tunggu..");
@@ -96,7 +105,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             etNama.setText(currentUser.getDisplayName());
             serverFileUri= currentUser.getPhotoUrl();
             //Log.d("photoServer",serverFileUri.getPath());
-            readUserDatabase();
+            getDataDokter();
             if(serverFileUri!=null){
                 Glide.with(this)
                         .load(serverFileUri)
@@ -107,6 +116,17 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         }else{
             etNama.setText("");
         }
+
+        setDropDownMenu();
+    }
+
+    private void setDropDownMenu(){
+        //set dropdown menu using array and adapter
+        List<String> gender = new ArrayList<String>();
+        gender.add("Perempuan");
+        gender.add("Laki-Laki");
+        jenisAdapter = new ArrayAdapter<>(getApplicationContext(),R.layout.dropdown_menu,gender);
+        etJenisKel.setAdapter(jenisAdapter);
     }
 
     @Override
@@ -122,7 +142,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             case R.id.iv_profile_profile:
                 changeImage();
                 break;
-            case R.id.remove:
+            case R.id.delete:
                 removePhoto();
                 break;
             case R.id.choose:
@@ -132,8 +152,8 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void changeImage(){
-        LinearLayout remove = bottomSheetDialog.findViewById(R.id.remove);
-        LinearLayout choose = bottomSheetDialog.findViewById(R.id.choose);
+        MaterialButton remove = bottomSheetDialog.findViewById(R.id.delete);
+        MaterialButton choose = bottomSheetDialog.findViewById(R.id.choose);
 
         remove.setOnClickListener(this);
         choose.setOnClickListener(this);
@@ -191,6 +211,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                                 @Override
                                 public void onSuccess(Void unused) {
                                     ivProfile.setImageResource(R.drawable.ic_user);
+                                    finish();
                                     bottomSheetDialog.dismiss();
                                 }
                             });
@@ -201,15 +222,17 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         });
     }
 
-    private void readUserDatabase(){
+    private void getDataDokter(){
         databaseReference.child(currentUser.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
-                    etNip.setText(snapshot.child(NodeNames.NIP).getValue().toString());
-                    etStr.setText(snapshot.child(NodeNames.STR).getValue().toString());
-                    etSip.setText(snapshot.child(NodeNames.SIP).getValue().toString());
-                    etNomor.setText(snapshot.child(NodeNames.PHONE_NUMBER).getValue().toString());
+                    Dokters dokters = snapshot.getValue(Dokters.class);
+                    etNip.setText(dokters.getNip());
+                    etStr.setText(dokters.getStr());
+                    etSip.setText(dokters.getSip());
+                    etNomor.setText(dokters.getPonsel());
+                    etJenisKel.setText(dokters.getKelamin());
                 }else{
                     Toast.makeText(EditProfileActivity.this,"Data tidak ada",Toast.LENGTH_SHORT).show();
                 }
@@ -258,20 +281,21 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                                         nip = etNip.getText().toString();
                                         str =etStr.getText().toString();
                                         sip=etSip.getText().toString();
+                                        kelamin = etJenisKel.getText().toString();
 
-                                        DokterModel dokter = new DokterModel(id,nama,email,photo,ponsel,status,role,nip,str,sip);
+                                        Dokters dokter = new Dokters(id,nama,email,photo,ponsel,status,role,kelamin,nip,str,sip);
 
                                         databaseReference.child(id).setValue(dokter).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull @NotNull Task<Void> task) {
                                                 progress.dismiss();
-                                                Toast.makeText(EditProfileActivity.this, R.string.data_berhasil_disimpan, Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(EditProfileActivity.this, R.string.update_successful, Toast.LENGTH_SHORT).show();
                                                 finish();
                                             }
                                         });
                                     }else{
                                         Toast.makeText(EditProfileActivity.this,
-                                                getString(R.string.failed_to_update_data, task.getException()), Toast.LENGTH_SHORT).show();
+                                                getString(R.string.failed_to_update, task.getException()), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -301,6 +325,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                     nip = etNip.getText().toString();
                     str =etStr.getText().toString();
                     sip=etSip.getText().toString();
+                    kelamin = etJenisKel.getText().toString();
 
                     if(currentUser.getPhotoUrl()==null){
                         photo = " ";
@@ -311,18 +336,18 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                                 Log.d("uri",uri.toString());
                                 photo = uri.toString();
 
-                                dokter = new DokterModel(id,nama,email,photo,ponsel,status,role,nip,str,sip);
+                                dokter = new Dokters(id,nama,email,photo,ponsel,status,role,kelamin,nip,str,sip);
 
                                 databaseReference.child(id).setValue(dokter).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull @NotNull Task<Void> task) {
                                         if(task.isSuccessful()){
                                             progress.dismiss();
-                                            Toast.makeText(EditProfileActivity.this, R.string.data_berhasil_disimpan, Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(EditProfileActivity.this, R.string.update_successful, Toast.LENGTH_SHORT).show();
                                             finish();
                                         }else{
                                             Toast.makeText(EditProfileActivity.this,
-                                                    getString(R.string.failed_to_update_data, task.getException()), Toast.LENGTH_SHORT).show();
+                                                    getString(R.string.failed_to_update, task.getException()), Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 });
@@ -330,25 +355,25 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                         });
                     }
 
-                    dokter = new DokterModel(id,nama,email,photo,ponsel,status,role,nip,str,sip);
+                    dokter = new Dokters(id,nama,email,photo,ponsel,status,role,kelamin,nip,str,sip);
 
                     databaseReference.child(id).setValue(dokter).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull @NotNull Task<Void> task) {
                             if(task.isSuccessful()){
                                 progress.dismiss();
-                                Toast.makeText(EditProfileActivity.this, R.string.data_berhasil_disimpan, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(EditProfileActivity.this, R.string.update_successful, Toast.LENGTH_SHORT).show();
                                 finish();
                             }else{
                                 Toast.makeText(EditProfileActivity.this,
-                                        getString(R.string.failed_to_update_data, task.getException()), Toast.LENGTH_SHORT).show();
+                                        getString(R.string.failed_to_update, task.getException()), Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
 
                 }else{
                     Toast.makeText(EditProfileActivity.this,
-                            getString(R.string.failed_to_update_data, task.getException()), Toast.LENGTH_SHORT).show();
+                            getString(R.string.failed_to_update, task.getException()), Toast.LENGTH_SHORT).show();
                 }
             }
         });

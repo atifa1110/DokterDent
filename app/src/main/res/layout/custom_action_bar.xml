@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/blue"
     android:gravity="center_vertical"
     android:orientation="horizontal">
 
@@ -25,29 +24,25 @@
 
         <TextView
             android:id="@+id/tv_userName_action"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/Text.Medium"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:singleLine="true"
-            android:fontFamily="@font/opensans_semibold"
             android:ellipsize="marquee"
             android:fadingEdge="horizontal"
             android:marqueeRepeatLimit="marquee_forever"
             android:scrollHorizontally="true"
-            android:textColor="@android:color/white"
             android:textSize="14sp"
             tools:text="User Name"/>
 
         <TextView
             android:id="@+id/tv_userStatus_action"
+            style="@style/Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:fontFamily="@font/opensans_regular"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="4dp"
-            android:textColor="@android:color/white"
             android:textSize="12sp"
             tools:text="Online"/>
 

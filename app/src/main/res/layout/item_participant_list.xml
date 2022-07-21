@@ -1,65 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/clParticipant"
-    android:padding="5dp">
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:orientation="horizontal">
 
-    <RelativeLayout
-        android:id="@+id/layout_image"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_profile_user"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/ic_user" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_profile_user"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/ic_user" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="12dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.5">
 
-        <ImageView
-            android:id="@+id/iv_circle"
+        <TextView
+            android:id="@+id/tv_nama_user"
+            style="@style/Text.Medium"
+            android:maxLines="3"
+            android:textSize="16sp"
+            android:layout_toEndOf="@+id/layout_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Atifa Fiorenza" />
+
+        <RelativeLayout
+            android:id="@+id/layout_image"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="2dp"
-            android:layout_marginBottom="2dp"
-            app:srcCompat="@drawable/ic_circle_green" />
-    </RelativeLayout>
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_nama_user"
-        style="@style/Text.Semibold"
-        android:layout_marginStart="16dp"
-        android:layout_toEndOf="@+id/layout_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/participant_name" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_circle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_circle_green" />
 
-    <TextView
-        android:id="@+id/tv_online"
-        style="@style/Text"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="3dp"
-        android:layout_toEndOf="@+id/layout_image"
-        android:layout_below="@id/tv_nama_user"
-        tools:text="@string/Online"
-        android:textColor="@color/green"
-        android:textSize="12sp" />
+            <TextView
+                android:id="@+id/tv_online"
+                style="@style/Text"
+                android:layout_marginTop="2dp"
+                android:layout_marginStart="2dp"
+                android:layout_toEndOf="@+id/iv_circle"
+                android:textColor="@color/green"
+                tools:text="@string/Online" />
+        </RelativeLayout>
 
-    <TextView
-        android:id="@+id/tv_role"
-        style="@style/Text.Black"
-        android:layout_below="@id/tv_online"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="3dp"
-        android:layout_toEndOf="@+id/layout_image"
-        android:text="@string/konselor"
-        android:textSize="12sp" />
+        <TextView
+            android:id="@+id/tv_role"
+            style="@style/Text.Black"
+            android:layout_marginTop="3dp"
+            android:layout_toEndOf="@+id/layout_image"
+            android:layout_below="@id/tv_online"
+            android:text="@string/konselors"/>
 
-</RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

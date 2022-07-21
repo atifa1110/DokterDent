@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,16 +16,17 @@ import com.bumptech.glide.Glide;
 import com.dentist.dokterdent.Model.Extras;
 import com.dentist.dokterdent.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import bg.devlabs.fullscreenvideoview.FullscreenVideoView;
 
 public class DetailTopikActivity extends AppCompatActivity {
 
-    private ImageView iv_image;
+    private ImageView iv_image,iv_fullscreen;
     private FullscreenVideoView playerView;
-    private TextView tv_judul, narasi, sumber, tv_sumber;
-
-    private com.dentist.halodent.Model.TopikModel topik;
-    private String nar, sum;
+    private TextView tv_judul,tv_narasi,tv_sumber,tv_tanggal,sumber;
+    private Topiks topik;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,26 +35,43 @@ public class DetailTopikActivity extends AppCompatActivity {
         setActionBar();
 
         //inisialisasi view
+        iv_fullscreen = findViewById(R.id.fullscreen);
         iv_image = findViewById(R.id.image_view);
         playerView = findViewById(R.id.video_player);
-        tv_sumber = findViewById(R.id.tv_sumber);
-        tv_judul = findViewById(R.id.judul);
-        narasi = findViewById(R.id.narasi);
-        sumber = findViewById(R.id.sumber);
+        sumber = findViewById(R.id.tv_smb_detail_topik);
+        tv_judul = findViewById(R.id.tv_judul_detail_topik);
+        tv_narasi = findViewById(R.id.tv_narasi_detail_topik);
+        tv_sumber = findViewById(R.id.tv_sumber_detail_topik);
+        tv_tanggal = findViewById(R.id.tv_tanggal_detail_topik);
 
-        topik = (com.dentist.halodent.Model.TopikModel) getIntent().getSerializableExtra(Extras.TOPIK);
+        topik = (Topiks) getIntent().getSerializableExtra(Extras.TOPIK);
+
+        iv_fullscreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse(topik.getPhoto());
+                Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+                intent.setDataAndType(uri,"image/jpg");
+                startActivity(intent);
+            }
+        });
+
+        String nar = topik.getNarasi().toString();
+        String sum = topik.getSumber().toString();
+
+        nar = nar.replaceAll("/n","\n");
+        nar = nar.replaceAll("/n/n","\n\n");
+        sum = sum.replaceAll("/n", "\n");
+
+        SimpleDateFormat sfd = new SimpleDateFormat("d MMM yyy HH:mm");
+        String dateTime = sfd.format(new Date(Long.parseLong(topik.getTimestamp())));
+        String [] splitString = dateTime.split(" ");
+        String topikTime = splitString[0]+" "+splitString[1]+" "+splitString[2];
 
         tv_judul.setText(topik.getJudul());
-
-        nar = topik.getNarasi();
-        sum = topik.getSumber();
-
-        nar.replaceAll("\n\n", "\n\n");
-        nar.replaceAll("\n", "\n");
-        sum.replaceAll("\n", "\n");
-
-        narasi.setText(nar);
-        sumber.setText(sum);
+        tv_narasi.setText(nar);
+        tv_sumber.setText(sum);
+        tv_tanggal.setText(topikTime);
 
         if (topik.getTipe().equals("photo")) {
             if (topik.getPhoto().equals("")) {
@@ -66,6 +86,7 @@ public class DetailTopikActivity extends AppCompatActivity {
             iv_image.setVisibility(View.GONE);
             playerView.setVisibility(View.VISIBLE);
             tv_sumber.setVisibility(View.GONE);
+            sumber.setVisibility(View.GONE);
             //inizializePlayer();
             setVideoPlayer(topik.getPhoto());
         }

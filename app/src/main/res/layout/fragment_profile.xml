@@ -9,7 +9,7 @@
     tools:context=".Profile.ProfileFragment">
 
     <LinearLayout
-        android:id="@+id/relativeLayout2"
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -37,7 +37,7 @@
 
             <TextView
                 android:id="@+id/tv_nama_profile_fragment"
-                style="@style/Text.Semibold"
+                style="@style/Text.Medium"
                 android:text="@string/contoh_nama"
                 android:textSize="18sp" />
 
@@ -49,49 +49,52 @@
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:id="@+id/ll_akun"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="5dp"
-        android:layout_weight="2"
-        android:background="@drawable/background"
-        android:orientation="vertical"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
+        app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:id="@+id/tv_supervised"
-            style="@style/Text.Semibold"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:text="@string/akun"
-            android:textSize="15sp" />
-
-        <View
-            android:id="@+id/view"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/graylow" />
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btn_edit_profile"
-            style="@style/Button.TextButton"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="10dp"
-            android:drawableEnd="@drawable/ic_arrow_forward"
-            android:text="@string/edit_profile" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tv_supervised"
+                style="@style/Text.Medium"
+                android:textSize="16sp"
+                android:layout_margin="16dp"
+                android:text="@string/akun"/>
 
-    <androidx.appcompat.widget.AppCompatButton
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/graylow" />
+
+            <Button
+                android:id="@+id/btn_edit_profile"
+                style="@style/Button.TextButton"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:drawableEnd="@drawable/ic_arrow_forward"
+                android:text="@string/edit_profile" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_keluar"
-        style="@style/Button.Red"
+        style="@style/Button.ColorRed"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:text="@string/keluar"

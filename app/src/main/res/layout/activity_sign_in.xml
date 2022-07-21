@@ -6,23 +6,24 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.SignInActivity">
+    tools:context=".SignIn.SignInActivity">
 
     <ImageView
         android:id="@+id/intro_img"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_marginTop="45dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="77dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_dentalcare" />
+        app:srcCompat="@drawable/ic_logo_black" />
 
     <TextView
         android:id="@+id/tv_selamat"
-        style="@style/Text.BoldBlack"
+        style="@style/Text.Medium"
+        android:textSize="20dp"
         android:layout_marginTop="40dp"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="20dp"
         android:text="@string/selamat_datang"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/intro_img" />
@@ -31,7 +32,7 @@
         android:id="@+id/tv_sign_in"
         style="@style/Text"
         android:layout_marginTop="5dp"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="20dp"
         android:text="@string/signIn_lanjut"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_selamat" />
@@ -80,9 +81,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_password" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_masuk"
-        style="@style/Button.Green"
+        style="@style/Button.ColorGreen"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         android:text="@string/masuk"
@@ -91,24 +92,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_lupa_pass" />
 
-    <TextView
-        android:id="@+id/tv_belum_punya"
-        style="@style/Text"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="50dp"
-        android:text="@string/belum_punya_akun"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_daftar"
+        style="@style/Button.Middle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_masuk" />
-
-    <TextView
-        android:id="@+id/tv_daftar"
-        style="@style/Text.Semibold"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/sign_up"
-        android:textColor="@color/blue"
-        app:layout_constraintStart_toEndOf="@+id/tv_belum_punya"
-        app:layout_constraintTop_toBottomOf="@+id/btn_masuk" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_masuk"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

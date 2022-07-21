@@ -14,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.dentist.dokterdent.Model.Extras;
 import com.dentist.dokterdent.Model.Preference;
 import com.dentist.dokterdent.Model.Util;
 import com.dentist.dokterdent.R;
@@ -27,9 +26,9 @@ import java.util.List;
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder> {
 
     private Context context;
-    private List<ChatModel> chatlist;
+    private List<Chats> chatlist;
 
-    public ChatAdapter(Context context, List<ChatModel> chatlist) {
+    public ChatAdapter(Context context, List<Chats> chatlist) {
         this.context = context;
         this.chatlist = chatlist;
     }
@@ -44,48 +43,44 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull ChatAdapter.ChatViewHolder holder, int position) {
-        ChatModel chatModel = chatlist.get(position);
-        holder.userName.setText(chatModel.getUserName());
+        Chats chats = chatlist.get(position);
 
-        Glide.with(context).load(chatModel.getPhotoName())
+        holder.userName.setText(chats.getUserName());
+
+        Glide.with(context).load(chats.getPhotoName())
                 .placeholder(R.drawable.ic_user).fitCenter()
                 .error(R.drawable.ic_user).into(holder.iv_profile);
 
         //show only 30 character only
-        String lastMessage = chatModel.getLastMessage();
+        String lastMessage = chats.getLastMessage();
         lastMessage = lastMessage.length()>30?lastMessage.substring(0,30):lastMessage;
         holder.lastMessage.setText(lastMessage);
 
         //check last message Time
-        String lastMessageTime = chatModel.getLastMessageTime();
+        String lastMessageTime = chats.getLastMessageTime();
         Log.d(lastMessageTime,"lastmessagetime");
         if(lastMessageTime==null){
             lastMessageTime="";
         }if(!TextUtils.isEmpty(lastMessageTime)){
-            SimpleDateFormat sfd = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-            String dateTime = sfd.format(new Date(Long.parseLong(lastMessageTime)));
-            String [] splitString = dateTime.split(" ");
-            String messageTime = splitString[1];
-
             holder.lastMessageTime.setText(Util.getTimeAgo(Long.parseLong(lastMessageTime)));
         }
 
         //check if unread not 0
         //set visible and set text
-        if(!chatModel.getUnreadCount().equals("0")){
-            holder.unreadCount.setVisibility(View.VISIBLE);
-            holder.unreadCount.setText(chatModel.getUnreadCount());
-        }else{
+//        if(!chats.getUnreadCount().equals("0")){
+//            holder.unreadCount.setVisibility(View.VISIBLE);
+//            holder.unreadCount.setText(chats.getUnreadCount());
+//        }else{
             holder.unreadCount.setVisibility(View.GONE);
-        }
+        //}
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ChatActivity.class);
-                Preference.setKeyChatId(context,chatModel.getUserId());
-                Preference.setKeyChatName(context,chatModel.getUserName());
-                Preference.setKeyChatPhoto(context,chatModel.getPhotoName());
+                Preference.setKeyChatId(context, chats.getUserId());
+                Preference.setKeyChatName(context, chats.getUserName());
+                Preference.setKeyChatPhoto(context, chats.getPhotoName());
                 context.startActivity(intent);
             }
         });

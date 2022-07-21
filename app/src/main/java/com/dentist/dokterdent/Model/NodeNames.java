@@ -9,6 +9,7 @@ public class NodeNames {
     public static final String INTERVIEW = "Interview";
     public static final String JADWAL = "Jadwals";
     public static final String KONSELORS = "Konselors";
+    public static final String PASIENS = "Pasiens";
     public static final String MESSAGES = "Messages";
     public static final String TOKENS = "Tokens";
     public static final String TOPIKS = "Topiks";

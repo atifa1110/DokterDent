@@ -2,9 +2,6 @@ package com.dentist.dokterdent.Notification;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -17,8 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-import com.dentist.dokterdent.Activity.SignInActivity;
-import com.dentist.dokterdent.Model.Constant;
 import com.dentist.dokterdent.Model.Util;
 import com.dentist.dokterdent.R;
 import com.google.firebase.database.annotations.NotNull;
@@ -44,25 +39,21 @@ public class ChatMessagesService extends FirebaseMessagingService {
     }
 
     @Override
-    public void onMessageReceived(@NonNull @org.jetbrains.annotations.NotNull RemoteMessage remoteMessage) {
+    public void onMessageReceived(@NonNull @NotNull RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
 
         String title = remoteMessage.getNotification().getTitle();
         String message = remoteMessage.getNotification().getBody();
+        String image = remoteMessage.getData().get("image");
 
         if(remoteMessage.getNotification()!=null){
-
-            if(remoteMessage.getNotification().getImageUrl()!=null){
-                img_url = remoteMessage.getNotification().getImageUrl().toString();
-                image_bitmap = getBitmapFromURL(img_url);
+            if(message.equals("New Image")){
+                image_bitmap = getBitmapFromURL(image);
+                showNotification(title,message,image_bitmap);
+            }else{
+                //create and display notification
+                showNotification(title,message,null);
             }
-            //create and display notification
-            showNotification(title,message);
-        }
-        if(!remoteMessage.getData().isEmpty()){
-            Map<String,String> myData = remoteMessage.getData();
-            Log.d("Title",myData.get("key1"));
-            Log.d("Message",myData.get("key2"));
         }
     }
 
@@ -81,29 +72,29 @@ public class ChatMessagesService extends FirebaseMessagingService {
         }
     }
 
-    private void showNotification(String title, String message){
+    private void showNotification(String title, String message,Bitmap image){
         //create notification channel for API 26+
         createNotificationChannel();
 
         Uri defaultNotificationSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this
                 ,CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_dentalcare)
+                .setSmallIcon(R.drawable.ic_logo_tooth)
                 .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
                 .setContentTitle(title)
                 .setContentText(message)
                 .setAutoCancel(true)
-                .setLargeIcon(image_bitmap)
-                .setStyle(new NotificationCompat.BigPictureStyle()
-                        .bigPicture(image_bitmap)
-                        .bigLargeIcon(null))
                 .setSound(defaultNotificationSound)
                 .setLights(Color.GREEN,500,200)
                 .setVibrate(new long[]{0,250,250,250})
                 .setColor(getResources().getColor(R.color.design_default_color_primary))
                 .setPriority(NotificationCompat.PRIORITY_HIGH);
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+
+        if(image!=null){
+            builder.setLargeIcon(image);
+        }
 
         //notification ID is unique for each notification you create
         notificationManager.notify(2,builder.build());

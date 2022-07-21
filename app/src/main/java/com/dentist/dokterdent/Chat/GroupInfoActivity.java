@@ -6,19 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.dentist.dokterdent.Model.NodeNames;
-import com.dentist.dokterdent.Model.UserModel;
+import com.dentist.dokterdent.Model.Users;
 import com.dentist.dokterdent.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -28,17 +23,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.NotNull;
 
-import org.w3c.dom.Node;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class GroupInfoActivity extends AppCompatActivity {
 
     private TextView tv_group_name,tv_partisipan;
-    private Button btn_keluar;
     private RecyclerView rv_participant;
-    private List<UserModel> partisipantList;
+    private List<Users> partisipantList;
     private ParticipantAdapter participantAdapter;
 
     private FirebaseAuth firebaseAuth;
@@ -56,12 +48,11 @@ public class GroupInfoActivity extends AppCompatActivity {
         tv_group_name = findViewById(R.id.tv_group_name);
         tv_partisipan = findViewById(R.id.tv_partisipant_group);
         rv_participant = findViewById(R.id.rv_participant);
-        btn_keluar = findViewById(R.id.btn_leave);
 
         //set recycler view
         rv_participant.setLayoutManager(new LinearLayoutManager(this));
         partisipantList = new ArrayList<>();
-        participantAdapter = new ParticipantAdapter(GroupInfoActivity.this,partisipantList);
+        participantAdapter = new ParticipantAdapter(GroupInfoActivity.this, partisipantList);
         rv_participant.setAdapter(participantAdapter);
 
         //set database
@@ -80,40 +71,7 @@ public class GroupInfoActivity extends AppCompatActivity {
 
             }
         });
-
-        btn_keluar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(GroupInfoActivity.this);
-                alertDialogBuilder.setMessage("Apakah Anda yakin ingin keluar?")
-                        .setCancelable(false)
-                        .setPositiveButton("iya", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                deleteChat(groupId);
-                            }
-                        }).setNegativeButton("tidak", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
-            }
-        });
     }
-
-    private void deleteChat(String groupId){
-        databaseReferenceGroup.child(groupId).child("Participants").child(currentUser.getUid()).setValue(null).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull @NotNull Task<Void> task) {
-
-                finish();
-            }
-        });
-    }
-
     private void loadGroup(String groupId){
         databaseReferenceGroup.child(groupId).addValueEventListener(new ValueEventListener() {
             @Override
@@ -129,7 +87,7 @@ public class GroupInfoActivity extends AppCompatActivity {
                             String userId = ds.getKey();
                             String timestamp = ds.child(NodeNames.TIME_STAMP).getValue().toString();
                             String role = ds.child(NodeNames.ROLE).getValue().toString();
-                            UserModel user = new UserModel(userId,timestamp,role);
+                            Users user = new Users(userId,timestamp,role);
                             partisipantList.add(user);
                         }
                         participantAdapter.notifyDataSetChanged();

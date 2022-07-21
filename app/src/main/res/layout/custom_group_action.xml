@@ -25,12 +25,10 @@
 
         <TextView
             android:id="@+id/tv_userName_action"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/Text.Medium"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:singleLine="true"
-            android:fontFamily="@font/opensans_semibold"
             android:ellipsize="marquee"
             android:fadingEdge="horizontal"
             android:marqueeRepeatLimit="marquee_forever"

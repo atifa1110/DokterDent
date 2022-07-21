@@ -1,69 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/llGroupList"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:weightSum="2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingStart="5dp">
+        android:layout_height="wrap_content">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_group_chat"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/ic_group"/>
+            android:src="@drawable/ic_group" />
 
-        <TextView
-            android:id="@+id/tv_group_chat"
-            style="@style/Text.Semibold"
-            android:layout_toEndOf="@+id/iv_group_chat"
-            android:layout_marginStart="10dp"
-            android:textSize="16sp"
-            tools:text="Group Name" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_margin="4dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
 
-        <TextView
-            android:id="@+id/tv_sender_message_chat"
-            style="@style/Text.Black"
-            android:layout_below="@+id/tv_group_chat"
-            android:layout_toEndOf="@+id/iv_group_chat"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:maxLines="2"
-            tools:text="Sender Name"/>
+            <TextView
+                android:id="@+id/tv_group_chat"
+                style="@style/Text.Medium"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/iv_group_chat"
+                android:textSize="16sp"
+                tools:text="Group Name" />
 
-        <TextView
-            android:id="@+id/tv_last_message"
-            style="@style/Text"
-            android:layout_below="@+id/tv_group_chat"
-            android:layout_toEndOf="@+id/tv_sender_message_chat"
-            android:maxLines="2"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="5dp"
-            tools:text="Last Message" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/tv_sender_message_chat"
+                    style="@style/Text.Black"
+                    android:layout_below="@+id/tv_group_chat"
+                    android:layout_toEndOf="@+id/iv_group_chat"
+                    android:maxLines="2"
+                    tools:text="Sender Name" />
+
+                <TextView
+                    android:id="@+id/tv_last_message"
+                    style="@style/Text"
+                    android:layout_below="@+id/tv_group_chat"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@+id/tv_sender_message_chat"
+                    android:maxLines="2"
+                    tools:text="Last Message" />
+            </LinearLayout>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tv_last_message_time"
             style="@style/Text"
-            android:layout_marginEnd="5dp"
             android:layout_alignParentEnd="true"
             tools:text="09:00" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.08dp"
-            android:layout_below="@+id/iv_group_chat"
-            android:layout_marginTop="8dp"
-            android:layout_toEndOf="@+id/iv_group_chat"
-            android:background="@color/gray"
-            app:layout_constraintTop_toBottomOf="@id/iv_group_chat" />
+    </LinearLayout>
 
-    </RelativeLayout>
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:visibility="gone"
+        android:background="?android:attr/listDivider" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/tv_selesai"
+        style="@style/Text.Black"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:visibility="gone"
+        android:text="Percakapan ini telah di tutup"/>
+
+</LinearLayout>

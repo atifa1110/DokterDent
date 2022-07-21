@@ -16,8 +16,7 @@
         android:paddingTop="4dp"
         android:paddingEnd="8dp"
         android:paddingBottom="4dp"
-        android:text="June 10"
-        android:visibility="gone"
+        android:text="10 June 2022"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +25,7 @@
         android:id="@+id/card_llSent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/blue"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="12dp"
         android:layout_marginEnd="5dp"
         android:layout_marginTop="5dp"
@@ -34,7 +33,7 @@
         app:cardPreventCornerOverlap="false"
         app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/tv_chat_time">
 
         <LinearLayout
             android:id="@+id/llSent"
@@ -45,7 +44,7 @@
 
             <TextView
                 android:id="@+id/tvSentMessage"
-                style="@style/Text.White"
+                style="@style/Text.Black"
                 android:maxWidth="260dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="10dp"
@@ -108,7 +107,7 @@
 
             <TextView
                 android:id="@+id/tvReceivedName"
-                style="@style/Text.Semibold"
+                style="@style/Text.Medium"
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"

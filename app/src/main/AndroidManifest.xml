@@ -15,7 +15,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DokterDent">
         <activity
-            android:name=".Activity.DetailPasienActivity"
+            android:name=".SignIn.LupaPasswordSendActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".SignIn.LupaPasswordActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".SignIn.SignUpActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".SignIn.SplashScreenActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SignIn.MainActivity"
+            android:exported="true"
+            android:label="@string/title_activity_bottom" />
+        <activity
+            android:name=".Chat.DetailPasienActivity"
             android:exported="true" />
         <activity android:name=".Profile.EditProfileActivity" />
         <activity android:name=".Info.DetailTopikActivity" />
@@ -33,19 +59,13 @@
 
         <activity android:name=".Chat.GroupInfoActivity" />
         <activity android:name=".Chat.GroupActivity" />
-        <activity android:name=".Activity.KonselorActivity" />
+        <activity android:name=".Chat.KonselorActivity" />
         <activity android:name=".Chat.ChatActivity" />
         <activity
-            android:name=".Activity.SignInActivity"
+            android:name=".SignIn.SignInActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".Activity.MainActivity" />
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

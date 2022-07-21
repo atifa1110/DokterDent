@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignIn.SignUpActivity">
+
+    <include
+        android:id="@+id/appbar"
+        layout="@layout/custom_action_layout"/>
+
+    <TextView
+        android:id="@+id/tv_selamat"
+        style="@style/Text.Medium"
+        android:textSize="20dp"
+        android:layout_below="@id/appbar"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/sign_up_to_halo" />
+
+    <TextView
+        android:id="@+id/tv_sign_in"
+        style="@style/Text"
+        android:layout_below="@id/tv_selamat"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/masukkan_data" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_email_signup"
+        style="@style/TextInputLayout.clear"
+        android:layout_below="@id/tv_sign_in"
+        android:layout_marginTop="20dp"
+        app:startIconDrawable="@drawable/ic_email">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_email_signup"
+            style="@style/TextInputEditText.inputEmail"
+            android:hint="@string/email_address" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_nama_signup"
+        style="@style/TextInputLayout.clear"
+        android:layout_marginTop="5dp"
+        app:startIconDrawable="@drawable/ic_person"
+        android:layout_below="@id/til_email_signup">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_nama_signup"
+            style="@style/TextInputEditText.inputText"
+            android:hint="@string/nama"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_password_signup"
+        style="@style/TextInputLayout"
+        android:layout_marginTop="5dp"
+        app:startIconDrawable="@drawable/ic_password"
+        android:layout_below="@id/til_nama_signup"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_password_signup"
+            style="@style/TextInputEditText.inputPassword"
+            android:hint="@string/password"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_confirm_signup"
+        style="@style/TextInputLayout"
+        android:layout_marginTop="5dp"
+        app:startIconDrawable="@drawable/ic_password"
+        android:layout_below="@id/til_password_signup"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_confirm_signup"
+            style="@style/TextInputEditText.inputPassword"
+            android:hint="@string/password_confirm"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_nomer_signup"
+        style="@style/TextInputLayout.clear"
+        android:layout_marginTop="5dp"
+        app:startIconDrawable="@drawable/ic_phone"
+        android:layout_below="@id/til_confirm_signup">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_nomer_signup"
+            style="@style/TextInputEditText.inputText"
+            android:hint="@string/nomer_ponsel"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_daftar"
+        style="@style/Button.ColorGreen"
+        android:layout_below="@id/til_nomer_signup"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/daftar" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_masuk"
+        style="@style/Button.Middle"
+        android:layout_below="@+id/btn_daftar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_daftar" />
+
+    <TextView
+        android:id="@+id/hasil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_masuk"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="hasil"
+        android:textColor="@color/black" />
+
+</RelativeLayout>

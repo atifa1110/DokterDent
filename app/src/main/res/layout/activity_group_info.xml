@@ -29,7 +29,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_group_name"
-        style="@style/Text.Semibold"
+        style="@style/Text.Medium"
         android:text="@string/group_name"
         android:textSize="16sp"
         android:padding="10dp"
@@ -62,16 +62,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_partisipant_group" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_keluar"
-        style="@style/Button.Red"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:text="@string/keluar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_participant" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

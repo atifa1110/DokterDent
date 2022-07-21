@@ -26,6 +26,6 @@
             android:layout_marginTop="8dp"
             android:textSize="14sp"
             android:text="Silahkan tunggu..."
-            android:fontFamily="@font/opensans_semibold"/>
+            android:fontFamily="@font/roboto_medium"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

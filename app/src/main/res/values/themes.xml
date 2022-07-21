@@ -14,77 +14,48 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="ActionBar" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/white</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textColorHint">@android:color/black</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_arrow_back_black</item>
+    </style>
+
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="colorControlActivated">@color/blue</item>
     </style>
 
+    <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="chipBackgroundColor">@color/chip_background_color</item>
+        <item name="android:textColor">@color/chip_text_color</item>
+        <item name="checkedIconTint">@color/white</item>
+        <item name="rippleColor">@color/whitealpha</item>
+    </style>
+
     <style name="Text">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">14sp</item>
-        <item name="fontFamily">@font/opensans_regular</item>
-    </style>
-
-    <style name="Text.White">
-        <item name="android:textColor">@android:color/white</item>
+        <item name="fontFamily">@font/roboto_regular</item>
     </style>
 
     <style name="Text.Black">
         <item name="android:textColor">@android:color/black</item>
     </style>
 
-    <style name="Text.BoldBlack">
+    <style name="Text.Medium">
         <item name="android:textColor">@android:color/black</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:layout_marginStart">25dp</item>
-        <item name="android:layout_marginTop">16dp</item>
-        <item name="fontFamily">@font/opensans_bold</item>
+        <item name="fontFamily">@font/roboto_medium</item>
     </style>
-
-    <style name="Text.BoldWhite">
-        <item name="android:textColor">@android:color/white</item>
-        <item name="fontFamily">@font/opensans_bold</item>
-    </style>
-
-    <style name="Text.BoldBlue">
-        <item name="android:textColor">@color/blue</item>
-        <item name="fontFamily">@font/opensans_bold</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:layout_marginStart">25dp</item>
-        <item name="android:layout_marginTop">16dp</item>
-    </style>
-
-    <style name="Text.Semibold">
-        <item name="android:textColor">@android:color/black</item>
-        <item name="fontFamily">@font/opensans_semibold</item>
-    </style>
-
-    <style name="Text.SemiboldWhite">
-        <item name="android:textColor">@android:color/white</item>
-        <item name="fontFamily">@font/opensans_semibold</item>
-    </style>
-
 
     <style name="Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="textAllCaps">true</item>
-        <item name="fontFamily">@font/opensans_regular</item>
-    </style>
-
-    <style name="Button.Blue">
-        <item name="android:background">@drawable/background_btn_blue</item>
-    </style>
-
-    <style name="Button.Green">
-        <item name="android:background">@drawable/background_btn_green</item>
-    </style>
-
-    <style name="Button.Red">
-        <item name="android:background">@drawable/background_btn_red</item>
+        <item name="fontFamily">@font/roboto_regular</item>
     </style>
 
     <style name="Button.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
@@ -93,7 +64,7 @@
         <item name="android:textColor">@color/gray</item>
         <item name="android:textAlignment">textStart</item>
         <item name="textAllCaps">false</item>
-        <item name="fontFamily">@font/opensans_regular</item>
+        <item name="fontFamily">@font/roboto_regular</item>
     </style>
 
     <style name="Button.TextButtonWhite" parent="Widget.MaterialComponents.Button.TextButton">
@@ -101,7 +72,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="textAllCaps">false</item>
-        <item name="fontFamily">@font/opensans_regular</item>
+        <item name="fontFamily">@font/roboto_regular</item>
     </style>
 
     <style name="Button.Text" parent="Widget.MaterialComponents.Button.TextButton">
@@ -110,36 +81,83 @@
         <item name="android:textColor">@color/black</item>
         <item name="textAllCaps">false</item>
         <item name="android:textAlignment">textStart</item>
-        <item name="fontFamily">@font/opensans_semibold</item>
+        <item name="fontFamily">@font/roboto_medium</item>
+    </style>
+
+    <style name="Button.Middle" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
+    </style>
+
+    <style name="Button.ColorGreen" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:backgroundTint">@color/green</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/roboto_regular</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
+    </style>
+
+    <style name="Button.ColorLightBlue" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:backgroundTint">#B2DFF2</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="fontFamily">@font/roboto_regular</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
+    </style>
+
+    <style name="Button.ColorRed" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:backgroundTint">@color/red</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <style name="Button.ColorBlue" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:backgroundTint">@color/blue</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/roboto_regular</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
     </style>
 
     <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">25dp</item>
-        <item name="android:layout_marginEnd">25dp</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
     </style>
 
     <style name="TextInputLayout.dropDown" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="endIconMode">dropdown_menu</item>
-        <item name="android:layout_marginStart">25dp</item>
-        <item name="android:layout_marginEnd">25dp</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
     </style>
 
     <style name="TextInputLayout.clear" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="endIconMode">clear_text</item>
-        <item name="android:layout_marginStart">25dp</item>
-        <item name="android:layout_marginEnd">25dp</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
     </style>
 
     <style name="TextInputEditText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="fontFamily">@font/opensans_regular</item>
+        <item name="fontFamily">@font/roboto_regular</item>
     </style>
 
     <style name="TextInputEditText.inputText">
@@ -165,13 +183,6 @@
     <style name="TextInputEditText.inputPassword">
         <item name="android:editTextStyle">@style/TextInputEditText</item>
         <item name="android:inputType">textPassword</item>
-    </style>
-
-    <style name="Checkbox">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">25dp</item>
-        <item name="android:layout_marginEnd">25dp</item>
     </style>
 
 </resources>

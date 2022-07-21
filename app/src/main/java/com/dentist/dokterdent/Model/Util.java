@@ -1,21 +1,12 @@
 package com.dentist.dokterdent.Model;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-import com.dentist.dokterdent.Chat.ChatModel;
 import com.dentist.dokterdent.Notification.Api;
-import com.dentist.dokterdent.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,9 +20,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.NotNull;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -67,7 +55,7 @@ public class Util {
         }
     }
 
-    public static void updateChatDetails(Context context, String currentUserId, String chatUserId, String lastMessage){
+    public static void updateChatDetails(Context context, String currentUserId, String chatUserId, String lastMessage, String lastMessageTime){
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         //asking the chat user whenever we sent the message unread count will
         //increament
@@ -76,8 +64,6 @@ public class Util {
         chatRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                String timestamp = ""+System.currentTimeMillis();
-
                 String currentCount = "0" ;
                 //jika sudah ada di database
                 if(snapshot.child(NodeNames.UNREAD_COUNT).getValue()!=null){
@@ -87,12 +73,12 @@ public class Util {
                 Map chatUser = new HashMap();
                 chatUser.put(NodeNames.UNREAD_COUNT,Integer.parseInt(currentCount)+1);
                 chatUser.put(NodeNames.LAST_MESSAGE,lastMessage);
-                chatUser.put(NodeNames.LAST_MESSAGE_TIME,ServerValue.TIMESTAMP);
+                chatUser.put(NodeNames.LAST_MESSAGE_TIME,lastMessageTime);
 
                 Map chatCurrent = new HashMap();
                 chatCurrent.put(NodeNames.UNREAD_COUNT,0);
                 chatCurrent.put(NodeNames.LAST_MESSAGE,lastMessage);
-                chatCurrent.put(NodeNames.LAST_MESSAGE_TIME,ServerValue.TIMESTAMP);
+                chatCurrent.put(NodeNames.LAST_MESSAGE_TIME,lastMessageTime);
 
                 HashMap <String,Object> messageUserMap = new HashMap();
                 messageUserMap.put(NodeNames.CHATS + "/" + currentUserId + "/" + chatUserId, chatCurrent);
@@ -115,7 +101,7 @@ public class Util {
         });
     }
 
-    public static void sendNotification(Context context,String title,String message,String userId){
+    public static void sendNotificationChat(Context context,String title,String message,String image,String userId){
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference databaseReference = rootRef.child(NodeNames.TOKENS).child(userId);
 
@@ -136,70 +122,21 @@ public class Util {
                             .addConverterFactory(GsonConverterFactory.create(gson))
                             .build();
 
-
                     Api api = retrofit.create(Api.class);
-                    Call<ResponseBody> call = api.sendNotification(deviceToken,title,message);
+                    Call<ResponseBody> call = api.sendNotificationChat(deviceToken,title,message,image);
                     call.enqueue(new Callback<ResponseBody>() {
                         @Override
                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                            try{
-                                Toast.makeText(context.getApplicationContext(), response.body().string(),Toast.LENGTH_SHORT).show();
-                            }catch (IOException e){
-                                e.printStackTrace();
-                            }
+//                            try{
+//                                Toast.makeText(context.getApplicationContext(), response.body().string(),Toast.LENGTH_SHORT).show();
+//                            }catch (IOException e){
+//                                e.printStackTrace();
+//                            }
                         }
 
                         @Override
                         public void onFailure(Call<ResponseBody> call, Throwable t) {
-                            Toast.makeText(context.getApplicationContext(), t.getMessage(),Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull @org.jetbrains.annotations.NotNull DatabaseError error) {
-
-            }
-        });
-    }
-
-    public static void sendNotificationChat(Context context,String title,String message,String userId){
-        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference databaseReference = rootRef.child(NodeNames.TOKENS).child(userId);
-
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @org.jetbrains.annotations.NotNull DataSnapshot snapshot) {
-                if(snapshot.child(NodeNames.DEVICE_TOKEN).getValue()!=null){
-                    String deviceToken = snapshot.child(NodeNames.DEVICE_TOKEN).getValue().toString();
-
-                    String Url = "https://halo-dent.web.app/api/";
-
-                    Gson gson = new GsonBuilder()
-                            .setLenient()
-                            .create();
-
-                    Retrofit retrofit = new Retrofit.Builder()
-                            .baseUrl(Url)
-                            .addConverterFactory(GsonConverterFactory.create(gson))
-                            .build();
-
-
-                    Api api = retrofit.create(Api.class);
-                    Call<ResponseBody> call = api.sendNotificationChat(deviceToken,title,message);
-                    call.enqueue(new Callback<ResponseBody>() {
-                        @Override
-                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                            try{
-                                Toast.makeText(context.getApplicationContext(), response.body().string(),Toast.LENGTH_SHORT).show();
-                            }catch (IOException e){
-                                e.printStackTrace();
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<ResponseBody> call, Throwable t) {
-                            Toast.makeText(context.getApplicationContext(), t.getMessage(),Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context.getApplicationContext(), t.getMessage(),Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -213,14 +150,14 @@ public class Util {
 
     public static String getTimeAgo(long time) {
         //set date format
-        SimpleDateFormat sfd = new SimpleDateFormat("EEE dd/MM/yyyy HH:mm");
+        SimpleDateFormat sfd = new SimpleDateFormat("EEE dd MMM yyyy HH:mm");
         String dateTime = sfd.format(time);
 
         //split date format
         String [] splitString = dateTime.split(" ");
         String day = splitString[0];
-        String date = splitString[1];
-        String lastMessageTime = splitString[2];
+        String date = splitString[1]+" "+splitString[2]+" "+splitString[3];
+        String lastMessageTime = splitString[4];
 
         long now = System.currentTimeMillis();
 
@@ -233,11 +170,11 @@ public class Util {
 
         String text = null;
         if (minutes < 1) {
-            return text = "Just now";
+            return text = "Sekarang";
         } else if (hours < 24) {
             return text = lastMessageTime;
         } else if (hours < 48) {
-            return text = "Yesterday";
+            return text = "Kemarin";
         }else if(days < 7) {
             return text = day;
         }else{

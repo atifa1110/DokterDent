@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:weightSum="3">
 
         <LinearLayout
@@ -55,9 +55,9 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="4dp"
                     android:layout_toEndOf="@+id/time"
-                    android:fontFamily="@font/roboto_medium"
+                    android:fontFamily="@font/roboto_regular"
                     android:maxLines="1"
-                    android:textColor="@color/gray"
+                    android:textColor="@color/black"
                     tools:text="24 Juli 2021" />
             </RelativeLayout>
         </LinearLayout>
@@ -75,7 +75,7 @@
         android:id="@+id/divider2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:background="?android:attr/listDivider" />
 
 </LinearLayout>

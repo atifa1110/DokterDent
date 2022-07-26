@@ -69,7 +69,11 @@ public class InfoFragment extends Fragment implements CompoundButton.OnCheckedCh
         databaseReferenceTopik = FirebaseDatabase.getInstance().getReference().child(NodeNames.TOPIKS);
 
         topikList = new ArrayList<>();
-        rvTopik.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager linearLayout = new LinearLayoutManager(getActivity());
+        linearLayout.setReverseLayout(true);
+        linearLayout.setStackFromEnd(true);
+
+        rvTopik.setLayoutManager(linearLayout);
         topikAdapter = new TopikAdapter(getContext(), topikList);
         rvTopik.setAdapter(topikAdapter);
 

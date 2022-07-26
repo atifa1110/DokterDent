@@ -3,7 +3,6 @@ package com.dentist.dokterdent.Chat;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -105,11 +104,13 @@ public class DetailPasienActivity extends AppCompatActivity {
                     databaseReferenceUserSurvey.child(id).child("karies").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                            String kategori = snapshot.child("kategori").getValue().toString();
-                            String nilai = snapshot.child("score").getValue().toString();
-
-                            tv_kategori.setText(kategori);
-                            tv_nilai.setText(nilai);
+                            if(snapshot.exists()){
+                                tv_kategori.setText(snapshot.child("kategori").getValue().toString());
+                                tv_nilai.setText(snapshot.child("score").getValue().toString());
+                            }else{
+                                tv_kategori.setText(" ");
+                                tv_nilai.setText(" ");
+                            }
                         }
 
                         @Override

@@ -39,10 +39,9 @@ public class MainActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         currentUser = firebaseAuth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference().child(NodeNames.DOKTERS).child(currentUser.getUid());
+
         databaseReference.child(NodeNames.ONLINE).setValue("Online");
-
         databaseReference.child(NodeNames.ONLINE).onDisconnect().setValue("Offline");
-
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -55,4 +54,10 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        databaseReference.child(NodeNames.ONLINE).setValue("Online");
+        databaseReference.child(NodeNames.ONLINE).onDisconnect().setValue("Offline");
+    }
 }

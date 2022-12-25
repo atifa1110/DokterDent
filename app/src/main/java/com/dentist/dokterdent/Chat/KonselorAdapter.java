@@ -15,8 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.dentist.dokterdent.Model.Konselors;
-import com.dentist.dokterdent.Model.NodeNames;
-import com.dentist.dokterdent.Model.Preference;
+import com.dentist.dokterdent.Utils.NodeNames;
+import com.dentist.dokterdent.Utils.Preference;
 import com.dentist.dokterdent.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,9 +30,6 @@ public class KonselorAdapter extends RecyclerView.Adapter<KonselorAdapter.Konsel
 
     private Context context;
     private List<Konselors> konselorList;
-
-    private DatabaseReference databaseReferenceChats;
-    private FirebaseUser currentUser;
 
     public KonselorAdapter(Context context, List<Konselors> konselorList) {
         this.context = context;
@@ -52,24 +49,25 @@ public class KonselorAdapter extends RecyclerView.Adapter<KonselorAdapter.Konsel
     public void onBindViewHolder(@NonNull @NotNull KonselorAdapter.KonselorViewHolder holder, int position) {
         Konselors konselor = konselorList.get(position);
 
-        holder.tvNamaKonselor.setText(konselor.getNama());
-        holder.tvOnline.setText(konselor.getStatus());
+        try{
+            holder.tvNamaKonselor.setText(konselor.getNama());
+            holder.tvOnline.setText(konselor.getStatus());
 
-        if (konselor.getStatus().equals("Online")){
-            holder.ivCircle.setImageDrawable(context.getDrawable(R.drawable.ic_circle_green));
-        }else{
-            holder.tvOnline.setTextColor(context.getResources().getColor(R.color.gray));
-            holder.ivCircle.setImageDrawable(context.getDrawable(R.drawable.ic_circle_gray));
+            if (konselor.getStatus().equals("Online")){
+                holder.ivCircle.setImageDrawable(context.getDrawable(R.drawable.ic_circle_green));
+            }else{
+                holder.tvOnline.setTextColor(context.getResources().getColor(R.color.gray));
+                holder.ivCircle.setImageDrawable(context.getDrawable(R.drawable.ic_circle_gray));
+            }
+
+            Glide.with(context)
+                    .load(konselor.getPhoto())
+                    .placeholder(R.drawable.ic_user)
+                    .error(R.drawable.ic_user)
+                    .into(holder.ivProfileKonselor);
+        }catch (Exception e){
+            e.printStackTrace();
         }
-
-        Glide.with(context)
-                .load(konselor.getPhoto())
-                .placeholder(R.drawable.ic_user)
-                .error(R.drawable.ic_user)
-                .into(holder.ivProfileKonselor);
-
-        databaseReferenceChats = FirebaseDatabase.getInstance().getReference().child(NodeNames.CHATS);
-        currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

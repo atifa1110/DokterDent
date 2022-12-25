@@ -17,11 +17,11 @@
         <activity
             android:name=".SignIn.LupaPasswordSendActivity"
             android:exported="true"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".SignIn.LupaPasswordActivity"
             android:exported="true"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".SignIn.SignUpActivity"
             android:exported="true"
@@ -41,7 +41,7 @@
             android:exported="true"
             android:label="@string/title_activity_bottom" />
         <activity
-            android:name=".Chat.DetailPasienActivity"
+            android:name=".Group.DetailPasienActivity"
             android:exported="true" />
         <activity android:name=".Profile.EditProfileActivity" />
         <activity android:name=".Info.DetailTopikActivity" />
@@ -57,10 +57,12 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".Chat.GroupInfoActivity" />
-        <activity android:name=".Chat.GroupActivity" />
+        <activity android:name=".Group.GroupInfoActivity" />
+        <activity android:name=".Group.GroupActivity"
+            android:theme="@style/AppTheme"/>
         <activity android:name=".Chat.KonselorActivity" />
-        <activity android:name=".Chat.ChatActivity" />
+        <activity android:name=".Chat.ChatActivity"
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".SignIn.SignInActivity"
             android:exported="true"

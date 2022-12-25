@@ -1,29 +1,29 @@
-package com.dentist.dokterdent.Chat;
+package com.dentist.dokterdent.Model;
 
 public class Messages {
 
-    private  String message;
-    private  String messageFrom;
-    private  String messageId;
-    private  String messageTime;
-    private  String messageType;
+    private String messageId;
+    private String message;
+    private String messageFrom;
+    private Long messageTime;
+    private String messageType;
 
     public Messages() {
     }
 
-    public Messages(String message, String messageFrom, String messageTime, String messageType) {
+    public Messages(String message, String messageFrom, Long messageTime, String messageType) {
         this.message = message;
         this.messageFrom = messageFrom;
         this.messageTime = messageTime;
         this.messageType = messageType;
     }
 
-    public Messages(String message, String messageFrom, String messageId, String messageTime, String messageType) {
-        this.message = message;
-        this.messageFrom = messageFrom;
+    public String getMessageId() {
+        return messageId;
+    }
+
+    public void setMessageId(String messageId) {
         this.messageId = messageId;
-        this.messageTime = messageTime;
-        this.messageType = messageType;
     }
 
     public String getMessage() {
@@ -42,19 +42,11 @@ public class Messages {
         this.messageFrom = messageFrom;
     }
 
-    public String getMessageId() {
-        return messageId;
-    }
-
-    public void setMessageId(String messageId) {
-        this.messageId = messageId;
-    }
-
-    public String getMessageTime() {
+    public Long getMessageTime() {
         return messageTime;
     }
 
-    public void setMessageTime(String messageTime) {
+    public void setMessageTime(Long messageTime) {
         this.messageTime = messageTime;
     }
 

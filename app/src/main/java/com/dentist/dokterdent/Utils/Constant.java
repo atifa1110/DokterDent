@@ -1,4 +1,4 @@
-package com.dentist.dokterdent.Model;
+package com.dentist.dokterdent.Utils;
 
 public class Constant {
 

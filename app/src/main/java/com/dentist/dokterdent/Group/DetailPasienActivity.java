@@ -1,4 +1,4 @@
-package com.dentist.dokterdent.Chat;
+package com.dentist.dokterdent.Group;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -6,14 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.dentist.dokterdent.Model.Extras;
+import com.dentist.dokterdent.Utils.Extras;
 import com.dentist.dokterdent.Model.Interviews;
-import com.dentist.dokterdent.Model.NodeNames;
+import com.dentist.dokterdent.Utils.NodeNames;
 import com.dentist.dokterdent.Model.Pasiens;
 import com.dentist.dokterdent.R;
 import com.google.firebase.database.DataSnapshot;
@@ -91,7 +90,7 @@ public class DetailPasienActivity extends AppCompatActivity {
     }
 
     private void getDataSurvey(String id){
-        databaseReferenceUserSurvey.child(id).child("interview").addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReferenceUserSurvey.child(id).child(NodeNames.INTERVIEW).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 if(snapshot.exists()){

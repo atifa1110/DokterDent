@@ -19,7 +19,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dentist.dokterdent.Model.Util;
+import com.dentist.dokterdent.Utils.Util;
 import com.dentist.dokterdent.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

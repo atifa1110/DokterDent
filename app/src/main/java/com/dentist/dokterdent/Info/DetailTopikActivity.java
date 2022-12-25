@@ -13,7 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.dentist.dokterdent.Model.Extras;
+import com.dentist.dokterdent.Model.Topiks;
+import com.dentist.dokterdent.Utils.Extras;
 import com.dentist.dokterdent.R;
 
 import java.text.SimpleDateFormat;

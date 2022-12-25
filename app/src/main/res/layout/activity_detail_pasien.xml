@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Chat.DetailPasienActivity">
+    tools:context=".Group.DetailPasienActivity">
 
     <LinearLayout
         android:orientation="vertical"
@@ -96,7 +96,7 @@
                     android:id="@+id/tv_umur_user"
                     style="@style/Text.Black"
                     android:layout_weight="1"
-                    android:text="21 Tahun" />
+                    tools:text="21 Tahun" />
             </TableRow>
 
             <TableRow
@@ -112,7 +112,7 @@
                     android:id="@+id/tv_kelamin_user"
                     style="@style/Text.Black"
                     android:layout_weight="1"
-                    android:text="Perempuan" />
+                    tools:text="Perempuan" />
 
             </TableRow>
 
@@ -129,7 +129,7 @@
                     android:id="@+id/tv_alamat_user"
                     style="@style/Text.Black"
                     android:layout_weight="1"
-                    android:text="Grand depok city sektor anggrek 3 blok b4 no.2" />
+                    tools:text="Grand depok city sektor anggrek 3 blok b4 no.2" />
 
             </TableRow>
 
@@ -146,7 +146,7 @@
                     android:id="@+id/tv_nomer_user"
                     style="@style/Text.Black"
                     android:layout_weight="1"
-                    android:text="087878601919" />
+                    tools:text="087878601919" />
 
             </TableRow>
         </TableLayout>
@@ -184,7 +184,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginTop="8dp"
-            android:text="@string/iya"
+            tools:text="@string/iya"
             android:enabled="false"
             android:textColor="@color/gray"
             android:textSize="14sp"
@@ -208,7 +208,7 @@
             android:layout_marginEnd="20dp"
             android:layout_marginTop="8dp"
             android:enabled="false"
-            android:text="@string/iya"
+            tools:text="@string/iya"
             android:textColor="@color/gray"
             android:textSize="14sp"
             android:padding="10dp"
@@ -230,7 +230,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginTop="8dp"
-            android:text="@string/iya"
+            tools:text="@string/iya"
             android:enabled="false"
             android:textColor="@color/gray"
             android:textSize="14sp"
@@ -256,7 +256,7 @@
             android:background="@drawable/background_edittext"
             android:padding="10dp"
             android:enabled="false"
-            android:text="@string/iya"
+            tools:text="@string/iya"
             android:textColor="@color/gray"
             android:textSize="14sp" />
 
@@ -301,7 +301,7 @@
                     android:id="@+id/tv_jenis_karies"
                     style="@style/Text.Black"
                     android:layout_weight="1"
-                    android:text="Rendah" />
+                    tools:text="Rendah" />
             </TableRow>
 
             <TableRow
@@ -317,7 +317,7 @@
                     android:id="@+id/tv_nilai_karies"
                     style="@style/Text.Black"
                     android:layout_weight="1"
-                    android:text="19/20" />
+                    tools:text="19/20" />
 
             </TableRow>
         </TableLayout>

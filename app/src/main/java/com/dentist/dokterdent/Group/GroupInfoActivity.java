@@ -1,4 +1,4 @@
-package com.dentist.dokterdent.Chat;
+package com.dentist.dokterdent.Group;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.dentist.dokterdent.Model.NodeNames;
+import com.dentist.dokterdent.Utils.NodeNames;
 import com.dentist.dokterdent.Model.Users;
 import com.dentist.dokterdent.R;
 import com.google.firebase.auth.FirebaseAuth;

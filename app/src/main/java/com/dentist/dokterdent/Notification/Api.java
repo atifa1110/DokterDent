@@ -13,6 +13,7 @@ public interface Api {
             @Field("token") String token,
             @Field("title") String title,
             @Field("body") String body,
-            @Field("image") String image
+            @Field("image") String image,
+            @Field("chatid") String id
     );
 }

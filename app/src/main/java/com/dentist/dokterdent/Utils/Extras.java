@@ -1,4 +1,4 @@
-package com.dentist.dokterdent.Model;
+package com.dentist.dokterdent.Utils;
 
 public class Extras {
     public static final String USER_KEY = "user_key";
@@ -15,9 +15,9 @@ public class Extras {
     public static final String MESSAGE_TYPE_TEXT = "text";
     public static final String MESSAGE_TYPE_IMAGE = "image";
 
-    public static final String STATUS_ONLINE = "online";
-    public static final String STATUS_OFFLINE = "offline";
-    public static final String STATUS_TYPING = "typing..." ;
+    public static final String STATUS_ONLINE = "Online";
+    public static final String STATUS_OFFLINE = "Offline";
+    public static final String STATUS_TYPING = "Typing..." ;
 
     public static final String TYPING_STOPPED = "0" ;
     public static final String TYPING_STARTED = "1" ;

@@ -1,4 +1,4 @@
-package com.dentist.dokterdent.Model;
+package com.dentist.dokterdent.Utils;
 
 public class NodeNames {
 
@@ -6,7 +6,7 @@ public class NodeNames {
     public static final String CHATS = "Chats";
     public static final String DOKTERS = "Dokters";
     public static final String GROUPS = "Groups";
-    public static final String INTERVIEW = "Interview";
+    public static final String INTERVIEW = "Interviews";
     public static final String JADWAL = "Jadwals";
     public static final String KONSELORS = "Konselors";
     public static final String PASIENS = "Pasiens";
@@ -53,9 +53,9 @@ public class NodeNames {
     public static final String MESSAGE_TYPE ="messageType" ;
 
     //nodes chats
-    public static final String LAST_MESSAGE = "last_message";
-    public static final String LAST_MESSAGE_TIME = "last_message_time";
-    public static final String UNREAD_COUNT = "unread_count";
+    public static final String LAST_MESSAGE = "lastMessage";
+    public static final String LAST_MESSAGE_TIME = "lastMessageTime";
+    public static final String UNREAD_COUNT = "unreadCount";
     public static final String TIME_STAMP = "timestamp";
     public static final String TYPING = "typing";
 

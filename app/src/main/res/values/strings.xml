@@ -158,8 +158,10 @@
     <string name="contoh_sip">446.DG/325.1/35.73.302/2019</string>
 
     <!-- Group activity -->
-    <string name="enter_message">Enter Message</string>
-    <string name="failed_to_send_message">Failed to send Message</string>
+    <string name="upload_progress">Uploading %1$s (%2$s %%)</string>
+    <string name="download_progress">Downloading %1$s (%2$s %%)</string>
+    <string name="enter_message">Kirim Pesan</string>
+    <string name="failed_to_send_message">Failed to send message : %1$s</string>
 
     <!-- Group Info activity -->
     <string name="group_name">Group Name</string>
@@ -170,13 +172,17 @@
     <string name="message_name">John Grady Cole</string>
     <string name="time">08:00</string>
 
-    <!-- Item User -->x
+    <!-- Item User -->
     <string name="Online">Online</string>
     <string name="participant_name">Participant Name</string>
 
     <!-- empty chat -->
     <string name="blm_ada_chat">Belum Ada Chat Aktif</string>
     <string name="konsultasikan_dengan">Konsultasi masalah kesehatan anda\ndengan konselor kami</string>
+
+    <!-- Util  -->
+    <string name="failed_get_token">Failed to get token : %1$s</string>
+    <string name="failed_to_send_notification">Failed to send notification : %1$s</string>
 
     <!-- main quiz -->
     <string name="question">Question 1/9</string>
@@ -205,4 +211,12 @@
     <string name="email_terkirim">Email telah terkirim</string>
     <string name="email_berhasil">Silahkan cek email anda dan klik \n
         tautan terima untuk mengatur ulang kata sandi</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="anda">\"Anda : \"</string>
+
+    <string-array name="genders">
+        <item>Laki-Laki</item>
+        <item>Perempuan</item>
+    </string-array>
 </resources>

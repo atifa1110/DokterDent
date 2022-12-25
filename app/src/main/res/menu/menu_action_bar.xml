@@ -11,6 +11,7 @@
     <item
         android:id="@+id/menu_info"
         android:icon="@drawable/ic_info_black"
+        android:iconTint="@color/gray"
         android:title="@string/info"
         app:showAsAction="ifRoom" />
 </menu>

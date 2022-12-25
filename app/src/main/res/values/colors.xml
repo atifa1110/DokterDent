@@ -7,6 +7,7 @@
     <color name="teal_700">#FF018786</color>
 
     <color name="blue">#006ED1</color>
+    <color name="blue_dark">#00449f</color>
     <color name="black">#000000</color>
     <color name="red">#E44747</color>
     <color name="gray">#7C7C7C</color>
@@ -22,7 +23,15 @@
     <color name="darkgray">#858585</color>
     <color name="mediumgray">#DEDEDE</color>
 
+    <color name="group_background">#EDEDED</color>
+    <color name="group_background_dark">#262628</color>
+    <color name="bubble">@color/white</color>
+    <color name="bubble_dark">#3A3A3C</color>
+
+    <color name="chat_text_color">#A0A0A2</color>
     <color name="chat_background">#EDEDED</color>
+
+    <color name="send_background">#2C2C2E</color>
 
     <!-- colors for tab and screent text -->
     <color name="tab_indicator_gray">#c0c0c0</color>
@@ -32,4 +41,6 @@
     <!-- colors for button style -->
     <color name="gradient_start_color">#4c84ff</color>
     <color name="gradient_end_color">#18a3fe</color>
+
+    <color name="shimmer_color">#bfbdbd</color>
 </resources>

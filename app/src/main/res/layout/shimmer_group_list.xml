@@ -5,12 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp"
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/llGroupList"
         android:orientation="horizontal"
+        android:layout_margin="10dp"
         android:weightSum="2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -19,7 +18,7 @@
             android:id="@+id/iv_group_chat"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/ic_group" />
+            android:background="@color/shimmer_color" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -30,11 +29,12 @@
 
             <TextView
                 android:id="@+id/tv_group_chat"
-                style="@style/Text.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:layout_toEndOf="@+id/iv_group_chat"
                 android:textSize="16sp"
-                tools:text="Group Name" />
+                android:background="@color/shimmer_color" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -45,29 +45,33 @@
 
                 <TextView
                     android:id="@+id/tv_sender_message_chat"
-                    style="@style/Text.Black"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_group_chat"
                     android:layout_toEndOf="@+id/iv_group_chat"
                     android:maxLines="2"
-                    tools:text="Sender Name" />
+                    android:background="@color/shimmer_color"/>
 
                 <TextView
                     android:id="@+id/tv_last_message"
-                    style="@style/Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_group_chat"
                     android:layout_marginStart="5dp"
                     android:layout_toEndOf="@+id/tv_sender_message_chat"
                     android:maxLines="2"
-                    tools:text="Last Message" />
+                    android:background="@color/shimmer_color"/>
             </LinearLayout>
 
         </LinearLayout>
 
         <TextView
             android:id="@+id/tv_last_message_time"
-            style="@style/Text"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:background="@color/shimmer_color"
             android:layout_alignParentEnd="true"
-            tools:text="09:00" />
+            android:layout_marginTop="5dp"/>
 
     </LinearLayout>
 
@@ -75,7 +79,8 @@
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:visibility="gone"
         android:background="?android:attr/listDivider" />
 

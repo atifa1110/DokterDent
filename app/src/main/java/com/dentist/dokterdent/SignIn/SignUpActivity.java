@@ -98,7 +98,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_daftar:
-                signUp(v);
+                signUp();
                 break;
             case R.id.btn_masuk:
                 startActivity(new Intent(SignUpActivity.this, SignInActivity.class));
@@ -126,7 +126,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                         public void onComplete(@NonNull @NotNull Task<Void> task) {
                             if (task.isSuccessful()) {
                                 progress.dismiss();
-                                //Toast.makeText(SignUpActivity.this, R.string.user_created_success, Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(SignUpActivity.this, SignInActivity.class));
                                 progress.dismiss();
                             } else {
@@ -141,7 +140,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         });
     }
 
-    public void signUp(View v) {
+    public void signUp() {
         email = etEmail.getText().toString().trim();
         password = etPassword.getText().toString().trim();
 
@@ -156,8 +155,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                         updateDatabase();
                     } else {
                         progress.dismiss();
-                        Toast.makeText(SignUpActivity.this,
-                                getString(R.string.sign_up_failed, task.getException()), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignUpActivity.this, getString(R.string.sign_up_failed, task.getException()), Toast.LENGTH_SHORT).show();
                     }
                 }
             });

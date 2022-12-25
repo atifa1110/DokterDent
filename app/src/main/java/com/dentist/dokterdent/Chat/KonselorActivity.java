@@ -14,7 +14,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.dentist.dokterdent.Model.Konselors;
-import com.dentist.dokterdent.Model.NodeNames;
+import com.dentist.dokterdent.Utils.NodeNames;
 import com.dentist.dokterdent.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;
@@ -37,7 +37,6 @@ public class KonselorActivity extends AppCompatActivity {
     private KonselorAdapter konselorAdapter;
 
     private DatabaseReference databaseReferenceKonselor;
-    private String konselor_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,32 +83,16 @@ public class KonselorActivity extends AppCompatActivity {
     }
 
     private void getDataKonselor(){
-        databaseReferenceKonselor = FirebaseDatabase.getInstance().getReference().child(NodeNames.KONSELORS);
         Query query = databaseReferenceKonselor.orderByChild(NodeNames.NAME);
         query.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull @org.jetbrains.annotations.NotNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 konselorList.clear();
                 for (final DataSnapshot ds : snapshot.getChildren()){
                     if(ds.exists()) {
                         Konselors konselor = ds.getValue(Konselors.class);
-                        konselor.setId(ds.getKey());
-                        if (konselor.getNama() != null) {
-                            konselorList.add(konselor);
-                            databaseReferenceKonselor.child(konselor.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull @org.jetbrains.annotations.NotNull DataSnapshot snapshot) {
-                                    if(snapshot.exists()){
-                                        konselorAdapter.notifyDataSetChanged();
-                                    }
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull @org.jetbrains.annotations.NotNull DatabaseError error) {
-
-                                }
-                            });
-                        }
+                        konselorList.add(konselor);
+                        konselorAdapter.notifyDataSetChanged();
                     }
                 }
             }
@@ -127,17 +110,13 @@ public class KonselorActivity extends AppCompatActivity {
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 konselorList.clear();
                 for (DataSnapshot ds : snapshot.getChildren()) {
-                    konselor_id = ds.getKey();
-                    Log.d("id_konselor",konselor_id);
                     if (ds.exists()) {
-                        if(ds.child(NodeNames.NAME).toString().toLowerCase().contains(query.toLowerCase())){
-                            Konselors konselor = ds.getValue(Konselors.class);
+                        Konselors konselor = ds.getValue(Konselors.class);
+                        if(konselor.getNama().toLowerCase().contains(query.toLowerCase())){
                             konselorList.add(konselor);
-                        }else{
-                            Toast.makeText(KonselorActivity.this,"Data failed",Toast.LENGTH_SHORT).show();
+                            konselorAdapter.notifyDataSetChanged();
                         }
                     }
-                    konselorAdapter.notifyDataSetChanged();
                 }
             }
 

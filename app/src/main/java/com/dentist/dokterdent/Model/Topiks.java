@@ -1,4 +1,4 @@
-package com.dentist.dokterdent.Info;
+package com.dentist.dokterdent.Model;
 
 import java.io.Serializable;
 

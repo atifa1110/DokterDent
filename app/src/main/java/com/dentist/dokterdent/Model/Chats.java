@@ -1,4 +1,4 @@
-package com.dentist.dokterdent.Chat;
+package com.dentist.dokterdent.Model;
 
 public class Chats implements Comparable<Chats>{
 
@@ -71,7 +71,6 @@ public class Chats implements Comparable<Chats>{
         }else{
             return -1;
         }
-
     }
 }
 

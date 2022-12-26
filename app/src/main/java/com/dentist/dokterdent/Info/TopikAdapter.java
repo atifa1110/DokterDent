@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.dentist.dokterdent.Model.Topiks;
 import com.dentist.dokterdent.Utils.Extras;
 import com.dentist.dokterdent.R;
+import com.dentist.dokterdent.Utils.Util;
 import com.google.firebase.database.annotations.NotNull;
 
 import java.text.SimpleDateFormat;
@@ -48,36 +49,43 @@ public class TopikAdapter extends RecyclerView.Adapter<TopikAdapter.TopikViewHol
     public void onBindViewHolder(@NonNull @NotNull TopikViewHolder holder, int position) {
         Topiks topiks = topiksList.get(position);
 
-        holder.topikName.setText(topiks.getJudul());
-
-        String narasi = topiks.getNarasi();
-        narasi = narasi.length()>100?narasi.substring(0,100):narasi;
-
-        holder.topikNarasi.setText(narasi+"...");
-
         try{
+            if(topiks.getJudul().isEmpty()){
+                holder.topikName.setText("");
+            }else {
+                holder.topikName.setText(topiks.getJudul());
+            }
+
+            String narasi = "";
+            narasi = topiks.getNarasi().length()>100?topiks.getNarasi().substring(0,100):topiks.getNarasi();
+
+            if(topiks.getNarasi().isEmpty()){
+                holder.topikNarasi.setText(" ");
+            }else {
+                holder.topikNarasi.setText(narasi + "...");
+            }
+
+            if(topiks.getTimestamp()==null){
+                holder.time.setText("");
+            }else {
+                holder.time.setText(Util.getDay(topiks.getTimestamp()));
+            }
+
             Glide.with(context)
                     .load(topiks.getPhoto())
                     .placeholder(R.drawable.ic_add_photo)
-                    .centerCrop()
+                    .error(R.drawable.ic_add_photo)
                     .into(holder.photoName);
 
         }catch (Exception e){
-            holder.photoName.setImageResource(R.drawable.ic_add_photo);
+            e.printStackTrace();
         }
-
-        SimpleDateFormat sfd = new SimpleDateFormat("d MMM yyy HH:mm");
-        String dateTime = sfd.format(new Date(Long.parseLong(topiks.getTimestamp())));
-        String [] splitString = dateTime.split(" ");
-        String topikTime = splitString[0]+" "+splitString[1];
-
-        holder.time.setText(topikTime);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DetailTopikActivity.class);
-                intent.putExtra(Extras.TOPIK, new Topiks(topiks.getId(), topiks.getJudul(), topiks.getPhoto(), topiks.getNarasi(), topiks.getSumber(), topiks.getTimestamp(), topiks.getTipe()));
+                intent.putExtra(Extras.TOPIK, new Topiks(topiks.getJudul(), topiks.getPhoto(), topiks.getNarasi(), topiks.getSumber(), topiks.getTimestamp(), topiks.getTipe()));
                 context.startActivity(intent);
             }
         });

@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.dentist.dokterdent.Model.Chats;
 import com.dentist.dokterdent.Model.Konselors;
 import com.dentist.dokterdent.Model.Messages;
 import com.dentist.dokterdent.Utils.NodeNames;

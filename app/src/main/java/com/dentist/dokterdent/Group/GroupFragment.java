@@ -13,14 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.dentist.dokterdent.Model.Groups;
 import com.dentist.dokterdent.Model.Messages;
 import com.dentist.dokterdent.Utils.NodeNames;
 import com.dentist.dokterdent.R;
 import com.facebook.shimmer.ShimmerFrameLayout;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

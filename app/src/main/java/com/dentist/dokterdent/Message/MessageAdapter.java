@@ -64,7 +64,17 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         String fromUserId = messages.getMessageFrom();
 
         try{
-            holder.tvChatTime.setText(Util.getDay(messages.getMessageTime()));
+            if (position>0){
+                if (Util.getDay(messages.getMessageTime()).equals(Util.getDay(messageList.get(position-1).getMessageTime()))){
+                    holder.tvChatTime.setVisibility(View.GONE);
+                }else{
+                    holder.tvChatTime.setText(Util.getDay(messageList.get(position).getMessageTime()));
+                    holder.tvChatTime.setVisibility(View.VISIBLE);
+                }
+            }else{
+                holder.tvChatTime.setText(Util.getDay(messageList.get(position).getMessageTime()));
+                holder.tvChatTime.setVisibility(View.VISIBLE);
+            }
 
             //check
             if(fromUserId.equals(currentUser.getUid())){

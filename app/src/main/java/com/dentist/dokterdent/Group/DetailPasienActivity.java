@@ -27,11 +27,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DetailPasienActivity extends AppCompatActivity {
 
-    private CircleImageView iv_profil;
-    private TextView tv_umur,tv_email,tv_nama,tv_kelamin,tv_alamat,tv_nomor,tv_jawaban_1,tv_jawaban_2,tv_jawaban_3,tv_jawaban_4;
+    private CircleImageView ivProfil;
+    private TextView tvKategori,tvNilai;
+    private TextView tvUmur,tvEmail,tvNama,tvKelamin,tvAlamat,tvNomor,tvJawaban1,tvJawaban2,tvJawaban3,tvJawaban4;
 
-    private TextView tv_kategori;
-    private TextView tv_nilai;
     private DatabaseReference databaseReferenceUser = FirebaseDatabase.getInstance().getReference().child(Pasiens.class.getSimpleName());
     private DatabaseReference databaseReferenceUserSurvey = FirebaseDatabase.getInstance().getReference().child(NodeNames.SURVEYS);
 
@@ -41,20 +40,20 @@ public class DetailPasienActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_pasien);
         setActionBar();
 
-        iv_profil = findViewById(R.id.iv_user_detail);
-        tv_umur = findViewById(R.id.tv_umur_user);
-        tv_email= findViewById(R.id.tv_email_user_detail);
-        tv_nama = findViewById(R.id.tv_nama_user_detail);
-        tv_kelamin = findViewById(R.id.tv_kelamin_user);
-        tv_alamat = findViewById(R.id.tv_alamat_user);
-        tv_nomor = findViewById(R.id.tv_nomer_user);
-        tv_kategori = findViewById(R.id.tv_jenis_karies);
-        tv_nilai = findViewById(R.id.tv_nilai_karies);
+        ivProfil = findViewById(R.id.iv_user_detail);
+        tvUmur = findViewById(R.id.tv_umur_user);
+        tvEmail= findViewById(R.id.tv_email_user_detail);
+        tvNama = findViewById(R.id.tv_nama_user_detail);
+        tvKelamin = findViewById(R.id.tv_kelamin_user);
+        tvAlamat = findViewById(R.id.tv_alamat_user);
+        tvNomor = findViewById(R.id.tv_nomer_user);
+        tvKategori = findViewById(R.id.tv_jenis_karies);
+        tvNilai = findViewById(R.id.tv_nilai_karies);
 
-        tv_jawaban_1 = findViewById(R.id.tv_jawaban_1);
-        tv_jawaban_2 = findViewById(R.id.tv_jawaban_2);
-        tv_jawaban_3 = findViewById(R.id.tv_jawaban_3);
-        tv_jawaban_4 = findViewById(R.id.tv_jawaban_4);
+        tvJawaban1 = findViewById(R.id.tv_jawaban_1);
+        tvJawaban2 = findViewById(R.id.tv_jawaban_2);
+        tvJawaban3 = findViewById(R.id.tv_jawaban_3);
+        tvJawaban4 = findViewById(R.id.tv_jawaban_4);
 
         String id = getIntent().getStringExtra(Extras.USER);
 
@@ -67,18 +66,21 @@ public class DetailPasienActivity extends AppCompatActivity {
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
                     Pasiens pasiens = snapshot.getValue(Pasiens.class);
-                    tv_nama.setText(pasiens.getNama());
-                    tv_umur.setText(pasiens.getUsia()+" Tahun");
-                    tv_email.setText(pasiens.getEmail());
-                    tv_kelamin.setText(pasiens.getKelamin());
-                    tv_alamat.setText(pasiens.getAlamat());
-                    tv_nomor.setText("0"+pasiens.getPonsel());
+                    try {
+                        tvNama.setText(pasiens.getNama());
+                        tvUmur.setText(pasiens.getUsia() + " Tahun");
+                        tvEmail.setText(pasiens.getEmail());
+                        tvKelamin.setText(pasiens.getKelamin());
+                        tvAlamat.setText(pasiens.getAlamat());
+                        tvNama.setText("0" + pasiens.getPonsel());
 
-                    Glide.with(getApplicationContext()).load(pasiens.getPhoto()).placeholder(R.drawable.ic_user)
-                            .into(iv_profil);
-                }else{
-                    Toast.makeText(DetailPasienActivity.this,R.string.failed_to_read_data,Toast.LENGTH_SHORT);
+                        Glide.with(getApplicationContext()).load(pasiens.getPhoto()).placeholder(R.drawable.ic_user)
+                                .into(ivProfil);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
                 }
+
                 getDataSurvey(id);
             }
 
@@ -95,20 +97,20 @@ public class DetailPasienActivity extends AppCompatActivity {
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
                     Interviews interviews = snapshot.getValue(Interviews.class);
-                    tv_jawaban_1.setText(interviews.getPernah_ke_dokter());
-                    tv_jawaban_2.setText(interviews.getKeluhan());
-                    tv_jawaban_3.setText(interviews.getPengobatan());
-                    tv_jawaban_4.setText(interviews.getRiwayat_penyakit());
+                    tvJawaban1.setText(interviews.getPernah_ke_dokter());
+                    tvJawaban2.setText(interviews.getKeluhan());
+                    tvJawaban3.setText(interviews.getPengobatan());
+                    tvJawaban4.setText(interviews.getRiwayat_penyakit());
 
                     databaseReferenceUserSurvey.child(id).child("karies").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                             if(snapshot.exists()){
-                                tv_kategori.setText(snapshot.child("kategori").getValue().toString());
-                                tv_nilai.setText(snapshot.child("score").getValue().toString());
+                                tvKategori.setText(snapshot.child("kategori").getValue().toString());
+                                tvNilai.setText(snapshot.child("score").getValue().toString());
                             }else{
-                                tv_kategori.setText(" ");
-                                tv_nilai.setText(" ");
+                                tvKategori.setText(" ");
+                                tvNilai.setText(" ");
                             }
                         }
 

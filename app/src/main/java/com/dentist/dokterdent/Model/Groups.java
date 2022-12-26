@@ -1,4 +1,4 @@
-package com.dentist.dokterdent.Group;
+package com.dentist.dokterdent.Model;
 
 public class Groups {
     private String groupId,groupTitle,groupIcon,status;

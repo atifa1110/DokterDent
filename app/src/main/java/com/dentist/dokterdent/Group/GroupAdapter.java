@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.dentist.dokterdent.Model.Messages;
+import com.dentist.dokterdent.Model.Groups;
 import com.dentist.dokterdent.Utils.Extras;
 import com.dentist.dokterdent.Model.Konselors;
 import com.dentist.dokterdent.Utils.NodeNames;
@@ -29,8 +29,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.NotNull;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupViewHolder>{

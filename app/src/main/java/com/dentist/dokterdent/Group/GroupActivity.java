@@ -2,30 +2,25 @@ package com.dentist.dokterdent.Group;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.Manifest;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.dentist.dokterdent.Message.MessageAdapter;
+import com.dentist.dokterdent.Model.Groups;
 import com.dentist.dokterdent.Model.Messages;
 import com.dentist.dokterdent.Utils.NodeNames;
 import com.dentist.dokterdent.Utils.Extras;
@@ -84,9 +79,9 @@ public class GroupActivity extends AppCompatActivity {
         //inisialisasi semua view
         llSnackbar = findViewById(R.id.llSnackbar);
         llSendChat = findViewById(R.id.llSendChat);
-        llSendChat.setVisibility(View.GONE);
         ivSend = findViewById(R.id.ivSend);
         ivAttachment = findViewById(R.id.ivAttachment);
+        ivAttachment.setClickable(false);
         ivProfile = findViewById(R.id.iv_profile_action);
         tvUserName = findViewById(R.id.tv_userName_action);
         tvUserStatus = findViewById(R.id.tv_userStatus_action);

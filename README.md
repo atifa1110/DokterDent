@@ -43,8 +43,6 @@ Halo Admin adalah Aplikasi Messenger berbasis Java yang menggunakan Firebase seb
  <tr>
     <td><img src="https://user-images.githubusercontent.com/49097275/255697148-f9a5e23e-1b88-4c9e-8980-6306d11cc822.jpg" alt="Grup Chat"
          style="width:200px;height:400px;" </td>
-    <td><img src="https://user-images.githubusercontent.com/49097275/255693649-f22b1df4-db82-4a11-aed2-ec7cae6b66eb.jpg" alt="Konsul Selesai"
-         style="width:200px;height:400px;"></td>
    <td><img src="https://user-images.githubusercontent.com/49097275/255694811-002d6495-3153-42f2-a998-c777b3147199.jpg" alt="Grup Info"
          style="width:200px;height:400px;"></td>
   <td><img src="https://user-images.githubusercontent.com/49097275/255694863-09ff7421-41da-4a91-9535-b49a5f704016.jpg" alt="Detail Pasien"

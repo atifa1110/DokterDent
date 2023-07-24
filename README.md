@@ -18,57 +18,39 @@ Halo Admin adalah Aplikasi Messenger berbasis Java yang menggunakan Firebase seb
 ### Screenshots :
 
  <table align="center">
-  <tr>
-    <td><img src="https://user-images.githubusercontent.com/49097275/255672955-6f034b77-f52f-4ffa-ba61-ff2b27e08a8a.jpg" alt="Login"
+    <tr>
+     <td><img src="https://user-images.githubusercontent.com/49097275/255687363-d681defe-a607-49ab-aaa0-429bcab1e74b.jpg" alt="Login"
          style="width:200px;height:400px;" </td>
-     <td><img src="https://user-images.githubusercontent.com/49097275/255673086-9d7e8b12-4548-430f-b2b9-77690722a7e5.jpg" alt="Daftar1"
+     <td><img src="https://user-images.githubusercontent.com/49097275/255697043-a9bd21f6-4f19-40d4-87ee-7e41429bbd47.jpg" alt="Home1"
          style="width:200px;height:400px;" </td>
-    <td><img src="https://user-images.githubusercontent.com/49097275/255673188-9205e01d-ccea-472b-80fa-31732d24cc0c.jpg" alt="Daftar2"
+     <td><img src="https://user-images.githubusercontent.com/49097275/255697068-3b4be220-2fac-4745-abe6-06f9e264d771.jpg" alt="Home2"
          style="width:200px;height:400px;"></td>
-   <td><img src="https://user-images.githubusercontent.com/49097275/255673217-92d7e621-6f6f-40c4-bc3c-96a429f9bf04.jpg" alt="Daftar3"
+     <td><img src="https://user-images.githubusercontent.com/49097275/255687589-07d7b3e2-320f-4b15-9825-e193aeae88a1.jpg" alt="List Berita"
          style="width:200px;height:400px;"></td>
-   <td><img src="https://user-images.githubusercontent.com/49097275/255673232-b754d6e2-b78e-4b30-8e60-8dad2003217f.jpg" alt="Daftar4"
-         style="width:200px;height:400px;"></td>
-  </tr>
+    </tr>
   
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/49097275/255673253-dd6f430b-d6b6-480a-a579-badec35dfe3f.jpg" alt="Daftar5"
+    <td><img src="https://user-images.githubusercontent.com/49097275/255697103-f5335370-bfa1-4cfa-b930-c0b8013717c9.jpg" alt="Profile"
          style="width:200px;height:400px;" </td>
-     <td><img src="https://user-images.githubusercontent.com/49097275/255673403-f28e9fbb-ea58-47fc-a14b-a96939027e5b.jpg" alt="Home"
+     <td><img src="https://user-images.githubusercontent.com/49097275/255697131-9f682ca8-1f00-46c7-b8a8-7b9035f78815.jpg" alt="Edit Profile"
          style="width:200px;height:400px;" </td>
-    <td><img src="https://user-images.githubusercontent.com/49097275/255673326-b58dc2a7-dc4a-461b-9151-7b62b3175ee5.jpg" alt="Berita"
-         style="width:200px;height:400px;"></td>
-   <td><img src="https://user-images.githubusercontent.com/49097275/255673356-82052636-7058-4a42-8fec-d91a00b5891a.jpg" alt="Detail berita"
-         style="width:200px;height:400px;"></td>
-   <td><img src="https://user-images.githubusercontent.com/49097275/255676479-39d2da9e-ef36-4257-80e2-d0460a3381ec.png" alt="Detail konselor"
-         style="width:200px;height:400px;"></td>
+    <td><img src="https://user-images.githubusercontent.com/49097275/255698110-b0b8226c-4a6c-41ed-9c31-e36ec36b5d65.jpg" alt="Chat Konselor"
+         style="width:200px;height:400px;" </td>
+     <td><img src="https://user-images.githubusercontent.com/49097275/255697080-b0059c6b-d359-4476-95b6-87d0bbbc7eb0.jpg" alt="List Konselor"
+         style="width:200px;height:400px;" </td>
   </tr>
 
-  <tr>
-    <td><img src="https://user-images.githubusercontent.com/49097275/255676558-08c41203-5270-4993-bba9-6519321cd823.png" alt="Chat List"
+ <tr>
+    <td><img src="https://user-images.githubusercontent.com/49097275/255697148-f9a5e23e-1b88-4c9e-8980-6306d11cc822.jpg" alt="Grup Chat"
          style="width:200px;height:400px;" </td>
-     <td><img src="https://user-images.githubusercontent.com/49097275/255676593-65d82dd8-525a-40a0-a2ab-9c4cc3ef1968.png" alt="Detail Chat"
+    <td><img src="https://user-images.githubusercontent.com/49097275/255693649-f22b1df4-db82-4a11-aed2-ec7cae6b66eb.jpg" alt="Konsul Selesai"
+         style="width:200px;height:400px;"></td>
+   <td><img src="https://user-images.githubusercontent.com/49097275/255694811-002d6495-3153-42f2-a998-c777b3147199.jpg" alt="Grup Info"
+         style="width:200px;height:400px;"></td>
+  <td><img src="https://user-images.githubusercontent.com/49097275/255694863-09ff7421-41da-4a91-9535-b49a5f704016.jpg" alt="Detail Pasien"
          style="width:200px;height:400px;" </td>
-    <td><img src="https://user-images.githubusercontent.com/49097275/255679248-5a5de7fa-f4ac-4732-9879-5be85901d870.jpg" alt="Group Info"
-         style="width:200px;height:400px;"></td>
-   <td><img src="https://user-images.githubusercontent.com/49097275/255677937-dc4dc097-0609-4f61-b416-ec059cafced7.jpg" alt="List Berita"
-         style="width:200px;height:400px;"></td>
-   <td><img src="https://user-images.githubusercontent.com/49097275/255678024-6c3eb4f1-51d8-4075-8e77-3a2e0d361230.jpg" alt="Detail Berita"
-         style="width:200px;height:400px;"></td>
   </tr>
-
-  <tr>
-    <td><img src="https://user-images.githubusercontent.com/49097275/255678138-9731736c-e458-48d8-a253-43646a2cb9b1.jpg" alt="Profile"
-         style="width:200px;height:400px;" </td>
-     <td><img src="https://user-images.githubusercontent.com/49097275/255678106-0c13f610-12ab-4e23-95e4-90c64a78dd17.jpg" alt="Edit Profile"
-         style="width:200px;height:400px;" </td>
-   <td><img src="https://user-images.githubusercontent.com/49097275/255678174-b1b9b13a-d72f-4d22-a488-c5d6fa6d7472.jpg" alt="Kuesioner"
-         style="width:200px;height:400px;"></td>
-   <td><img src="https://user-images.githubusercontent.com/49097275/255678547-e8656650-6ef7-4ceb-b5d5-ff3464c2342d.jpg" alt="Hasil Kuesioner"
-         style="width:200px;height:400px;"></td>
-  </tr>
-   
-   
+ 
 </table><br><br>
 
 ### Tools and Tech stack used : 
